@@ -1,6 +1,6 @@
 
 
-<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?loading=async&key=AIzaSyDxi3_nWFSa7bgFUC_53M23G37MIodM1NA&callback=geoCoderInitialize"></script>
+<script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?loading=async&key=su clave&callback=geoCoderInitialize"></script>
 
 
 <script src="{{ url('/assets/js/modernizr.js') }}" type="text/javascript"></script>
