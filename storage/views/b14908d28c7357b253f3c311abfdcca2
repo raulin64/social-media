@@ -1,0 +1,27 @@
+		  <meta charset="utf-8">
+
+		  <title><?php echo  s('title') ; ?></title>
+		
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		  
+		  <?php echo  app_description() ; ?>
+		  <?php echo  app_keywords() ; ?>
+		  <?php echo  app_search_engine_access() ; ?>
+		  
+		  <?php echo  app_favicon() ; ?>
+		  
+		  
+		  <?php if(s("google_ua")): ?>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', '<?php echo  s("google_ua") ; ?>']);
+			_gaq.push(['_trackPageview']);
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+		<?php endif; ?>
+		  
+		  
