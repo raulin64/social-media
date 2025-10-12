@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #feedback-bg-info {
+            background-color: #d9edf7; /* Bootstrap bg-info color */
+            padding: 20px;
+            border-radius: 5px;
+            color: #31708f;
+        }
+    </style>
+</head>
+<body>
+    <div id="feedback-bg-info">Default Feedback Message</div>
+    <button id="update-feedback">Update Feedback</button>
+
+    <script>
+        $(document).ready(function () {
+            // Example text to update the feedback
+            const miTexto = "<strong>Success!</strong> Your feedback has been updated.";
+
+            // Update the feedback message when the button is clicked
+            $('#update-feedback').on('click', function () {
+                $('#feedback-bg-info').html(miTexto);
+            });
+        });
+    </script>
+</body>
+</html>
