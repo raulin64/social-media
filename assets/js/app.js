@@ -12,7 +12,7 @@
 		{
 		window.scrollTo(0, 0);
 		Chat.open(user_id);
-		
+		$('.collapse').show ();
 		}
 		else{
 		Chat.close();
