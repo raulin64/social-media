@@ -388,9 +388,20 @@
      overflow: auto;
 }
 
+ .msg-wrap-pc {
+     padding:1px;
+     max-height: 300px;
+     overflow: auto;
+}
  .msg-wrap-mobil {
      padding:1px;
      max-height: 100px;
+     overflow: auto;
+}
+
+ .msg-wrap-pc {
+     padding:1px;
+     max-height: 300px;
      overflow: auto;
 }
  .time {
@@ -398,7 +409,7 @@
 }
  .send-wrap {
      border-top: 1px solid #eee;
-     padding:10px;
+     padding:25px;
     /*background: #f8f8f8;
     */
 }
@@ -440,6 +451,11 @@
      color:#003bb3;
      font-weight: 300;
 }
+ .msg-wrap-pc .media-heading {
+     color:#003bb3;
+     font-weight: 300;
+}
+
  .msg-date {
      background: none;
      text-align: center;
