@@ -428,7 +428,7 @@ return array(
 	'packageamount' => 'Cantidad del paquete',
 	'currentcreditspck' => 'Paquete de créditos actual',
 	'deletecreditspck' => 'Paquete de créditos eliminados',
-	'dollars' => 'Dólares',
+	'dollars' => 'Euros',
 	'generalsettings' => 'Configuración general',
 	'defaultcredits' => 'Defecto Créditos',
 	'creditsystem' => 'Créditos del Sistema',
