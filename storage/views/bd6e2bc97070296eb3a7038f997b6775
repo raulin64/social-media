@@ -1,0 +1,199 @@
+
+<?php \Laravel\Section::start('content'); ?>
+
+	<div class="portlet-body">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th><?php echo  t('userdata') ; ?></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td><?php echo  t('totalusers') ; ?></td>
+						<td> <?php echo $users_total; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('userstoday') ; ?></td>
+						<td> <?php echo $users_today; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('usersweek') ; ?></td>
+						<td> <?php echo $users_week; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('usersmonth') ; ?></td>
+						<td> <?php echo $users_month; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('usersonline') ; ?></td>
+						<td> <?php echo $users_online; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('maleusers') ; ?></td>
+						<td> <?php echo $users_male; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('femaleusers') ; ?></td>
+						<td><?php echo $users_female; ?></td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+
+
+	<div class="portlet-body">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th><?php echo  t('photodata') ; ?></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td><?php echo  t('totalphotos') ; ?></td>
+						<td> <?php echo $photos_total; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('photostoday') ; ?></td>
+						<td> <?php echo $photos_today; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('photosweek') ; ?></td>
+						<td> <?php echo $photos_week; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('photosmonth') ; ?></td>
+						<td> <?php echo $photos_month; ?></td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+
+	
+	<div class="portlet-body">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th><?php echo  t('msgdata') ; ?></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td><?php echo  t('msgtotal') ; ?></td>
+						<td> <?php echo $msg_total; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('msgtoday') ; ?></td>
+						<td> <?php echo $msg_today; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('msgweek') ; ?></td>
+						<td> <?php echo $msg_week; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('msgmonth') ; ?></td>
+						<td> <?php echo $msg_month; ?></td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+
+	
+	<div class="portlet-body">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th><?php echo  t('encounterdata') ; ?></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td><?php echo  t('enountertotal') ; ?></td>
+						<td> <?php echo $encounters_total; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('encountertoday') ; ?></td>
+						<td> <?php echo $encounters_today; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('encounterweek') ; ?></td>
+						<td> <?php echo $encounters_week; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('encountermonth') ; ?></td>
+						<td> <?php echo $encounters_month; ?></td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+
+
+	
+
+	
+	<div class="portlet-body">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th><?php echo  t('giftdata') ; ?></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td><?php echo  t('gifttotal') ; ?></td>
+						<td> <?php echo $gifts_total; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('gifttoday') ; ?></td>
+						<td> <?php echo $gifts_today; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('giftweek') ; ?></td>
+						<td> <?php echo $gifts_week; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('giftmonth') ; ?></td>
+						<td> <?php echo $gifts_month; ?></td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+
+	
+	<div class="portlet-body">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th><?php echo  t('photoraterdata') ; ?></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td><?php echo  t('ratingtotal') ; ?></td>
+						<td> <?php echo $photo_rater_total; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('ratingtoday') ; ?></td>
+						<td> <?php echo $photo_rater_today; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('ratingweek') ; ?></td>
+						<td> <?php echo $photo_rater_week; ?></td>
+					</tr>
+					<tr>
+						<td><?php echo  t('ratingmonth') ; ?></td>
+						<td> <?php echo $photo_rater_month; ?></td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+<?php \Laravel\Section::stop(); ?>
+
+<?php echo view('czar::pageshell')->with(get_defined_vars())->render(); ?>

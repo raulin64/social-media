@@ -1,0 +1,636 @@
+
+
+<?php \Laravel\Section::start('styles'); ?>
+
+<link rel="stylesheet" href="<?php echo  url('/assets/css/redactor.css') ; ?>" />
+
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('content'); ?>
+
+
+<div class="row-fluid" style="margin-top:60px;">
+	<div class="span12">
+		<!-- BEGIN PORTLET-->   
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('emailconfigurations') ; ?></div>
+			</div>
+							
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<form action="<?php echo URL::to('/czar/update_email_config'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('smtphost') ; ?></label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="host" id="host" value="<?php echo $host; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('port') ; ?></label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="port" id="port" value="<?php echo $port; ?>"/>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('fromusername') ; ?></label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="from_username" id="encryption" value="<?php echo $from_username; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('password') ; ?></label>
+						<div class="controls">
+							<input type="password" class="m-wrap" name="password" id="password" value="<?php echo $password; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('encryption') ; ?></label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="encryption" id="encryption" value="<?php echo $encryption; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('fromemail') ; ?></label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="from_email" id="encryption" value="<?php echo $from_email; ?>"/>
+						</div>
+					</div>
+									
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+		<!-- END PORTLET-->
+						
+		<div class="portlet box green">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('emailnotifications') ; ?></div>
+			</div>
+							
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<form action="<?php echo URL::to('/czar/update_email_notification'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label span5"><?php echo  t('profilevisitdesc') ; ?> &nbsp;</label>
+						<div class="controls ">
+							<?php echo  Form::select('profilevisitor', array('1' => t("enable"), '0' => t("disable")), "$profilevisitor",array('class' => 'span3 chosen', 'id' => 'profile_visits_enable')) ; ?>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label span5"><?php echo  t('meetmedesc') ; ?> &nbsp;</label>
+						<div class="controls ">
+							<?php echo  Form::select('wantstomeet', array('1' => t("enable"), '0' => t("disable")), "$wantstomeet",array('class' => 'span3 chosen', 'id' => 'wants_to_meet_enable')) ; ?>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label span5"><?php echo  t('mutualattractiondesc') ; ?> &nbsp;</label>
+						<div class="controls ">
+							<?php echo  Form::select('mutualattraction', array('1' => t("enable"), '0' => t("disable")), "$mutualattraction",array('class' => 'span3 chosen', 'id' => 'mutual_attraction_enable')) ; ?>
+						</div>
+					</div>
+									
+					<div class="control-group" >
+						<label class="control-label span5"><?php echo   t('addcontactdesc') ; ?> &nbsp;</label>
+						<div class="controls ">
+							<?php echo  Form::select('addcontact', array('1' => t("enable"), '0' => t("disable")), "$addcontact",array('class' => 'span3 chosen', 'id' => 'add_contact_enable')) ; ?>
+						</div>
+					</div>
+					
+					<div class="control-group" >
+						<label class="control-label span5"><?php echo  t('giftsentdesc') ; ?> &nbsp;</label>
+						<div class="controls ">
+							<?php echo  Form::select('sendgift', array('1' => t("enable"), '0' => t("disable")), "$sendgift",array('class' => 'span3 chosen', 'id' => 'send_gift_enable')) ; ?>
+						</div>
+					</div>
+					
+					<div class="control-group" >
+						<label class="control-label span5"><?php echo  t('msgdesc') ; ?> &nbsp;</label>
+						<div class="controls ">
+							<?php echo  Form::select('message', array('1' => t("enable"), '0' => t("disable")), "$message",array('class' => 'span3 chosen', 'id' => 'message_enable')) ; ?>
+						</div>
+					</div>
+									
+					<div class="control-group" >
+						<label class="control-label span5"><?php echo  t('disableuserdesc') ; ?> &nbsp;</label>
+						<div class="controls ">
+							<?php echo  Form::select('disableuser', array('1' => t("enable"), '0' => t("disable")), "$disableuser",array('class' => 'span3 chosen', 'id' => 'disable_user_enable')) ; ?>
+						</div>
+					</div>
+					
+					<div class="control-group" >
+						<label class="control-label span5"><?php echo  t('userdeletedesc') ; ?> &nbsp;</label>
+						<div class="controls ">
+							<?php echo  Form::select('deleteuser', array('1' => t("enable"), '0' => t("disable")), "$deleteuser",array('class' => 'span3 chosen', 'id' => 'delete_user_enable')) ; ?>
+						</div>
+					</div>
+									
+					<div class="control-group " >
+						<label class="control-label span5"><?php echo  t('photodeletedesc') ; ?> &nbsp;</label>
+						<div class="controls ">
+							<?php echo  Form::select('deletephoto', array('1' => t("enable"), '0' => t("disable")), "$deletephoto",array('class' => 'span3 chosen', 'id' => 'delete_photo_enable')) ; ?>
+						</div>
+					</div>
+					
+					<div class="control-group " >
+						<label class="control-label span5"><?php echo  t('photocommentdesc') ; ?> &nbsp;</label>
+						<div class="controls ">
+							<?php echo  Form::select('commentphoto', array('1' => t("enable"), '0' => t("disable")), "$commentphoto",array('class' => 'span3 chosen', 'id' => 'comment_photo')) ; ?>
+						</div>
+					</div>
+					
+					<div class="control-group " >
+						<label class="control-label span5"><?php echo  t('photoratedesc') ; ?> &nbsp;</label>
+						<div class="controls ">
+							<?php echo  Form::select('ratephoto', array('1' => t("enable"), '0' => t("disable")), "$ratephoto",array('class' => 'span3 chosen', 'id' => 'rate_photo')) ; ?>
+						</div>
+					</div>
+									
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+						
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('profilevisitoremailcontent') ; ?></div>
+			</div>
+							
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('profilevisitdesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/profile_visitor_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="profilevisitoremailsubject" id="encryption" value="<?php echo $profilevisitoremailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('content') ; ?> :  </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="profilevisitoremail"><?php echo $profilevisitoremail; ?></textarea>
+							</br><b><?php echo  t('fromusernameprofilevisitor') ; ?></b>
+							</br><b><?php echo  t('fromuserprofilelink') ; ?></b>
+							</br><b><?php echo  t('tousernameprofilevisitor') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+						
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('addcontactemailcontent') ; ?></div>
+			</div>
+							
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo   t('addcontactdesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/add_contact_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="addcontactemailsubject" id="encryption" value="<?php echo $addcontactemailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"> <?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="addcontactemail"><?php echo $addcontactemail; ?></textarea>
+							</br><b><?php echo  t('fromusernameaddcontact') ; ?></b>
+							</br><b><?php echo  t('fromuserprofilelink') ; ?></b>
+							</br><b><?php echo  t('tousernameaddcontact') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+		
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('sendgiftemailcontent') ; ?></div>
+			</div>
+							
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('giftsentdesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/send_gift_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="sendgiftemailsubject" id="encryption" value="<?php echo $sendgiftemailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"> <?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="sendgiftemail"><?php echo $sendgiftemail; ?></textarea>
+							</br><b><?php echo  t('fromusernamegiftsend') ; ?></b>
+							</br><b><?php echo  t('fromuserprofilelink') ; ?></b>
+							</br><b><?php echo  t('tousernamegiftsend') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+		
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('msgemailcontent') ; ?></div>
+			</div>
+							
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('msgdesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/message_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="messageemailsubject" id="encryption" value="<?php echo $messageemailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"> <?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="messageemail"><?php echo $messageemail; ?></textarea>
+							</br><b><?php echo  t('fromusernamemsg') ; ?></b>
+							</br><b><?php echo  t('fromuserprofilelink') ; ?></b>
+							</br><b><?php echo  t('tousernamemsg') ; ?></b>
+							</br><b><?php echo  t('printmsg') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+						
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('meetmeemailcontent') ; ?></div>
+			</div>
+			
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('meetmedesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/meetme_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="meetmeemailsubject" id="encryption" value="<?php echo $meetmeemailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="meetmeemail"><?php echo $meetmeemail; ?></textarea>
+							</br><b><?php echo  t('fromusernamemeetme') ; ?></b>
+							</br><b><?php echo  t('fromuserprofilelink') ; ?></b>
+							</br><b><?php echo  t('tousernamemeetme') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+
+
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('mutualattractionemailcontent') ; ?></div>
+			</div>
+			
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('mutualattractiondesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/mutual_attraction_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="mutualattractionemailsubject" id="encryption" value="<?php echo $mutualattractionemailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="mutualattractionemail"><?php echo $mutualattractionemail; ?></textarea>
+							</br><b><?php echo  t('fromusernamemutualattraction') ; ?></b>
+							</br><b><?php echo  t('fromuserprofilelink') ; ?></b>
+							</br><b><?php echo  t('tousernamemutualattraction') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+						
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('forgotpwdmeailcontent') ; ?></div>
+			</div>
+			
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('forgotpwddesc') ; ?></b></p> 
+				<form action="<?php echo URL::to('/czar/forgot_password_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="forgotpasswordemailsubject" id="encryption" value="<?php echo $forgotpasswordemailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="forgotpasswordemail"><?php echo $forgotpasswordemail; ?></textarea>
+							</br><b><?php echo  t('printusername') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+							</br><b><?php echo  t('printpasswordlink') ; ?></b> 
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+						
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('emailverificationcontent') ; ?></div>
+			</div>
+			
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('emailverificationdesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/email_verification_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="emailverificationemailsubject" id="encryption" value="<?php echo $emailverificationemailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="emailverificationemail"><?php echo $emailverificationemail; ?></textarea>
+							</br><b><?php echo  t('printusername') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+							</br><b><?php echo  t('printverificationno') ; ?></b> 
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+		
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('disableuseremailcontent') ; ?></div>
+			</div>
+			
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('disableuserdesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/disable_user_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class=deleteuseremailcontent"control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="disableuseremailsubject" id="encryption" value="<?php echo $disableuseremailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="disableuseremail"><?php echo $disableuseremail; ?></textarea>
+							</br><b><?php echo  t('printusername') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+		
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('deleteuseremailcontent') ; ?></div>
+			</div>
+			
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('userdeletedesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/delete_user_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="deleteuseremailsubject" id="encryption" value="<?php echo $deleteuseremailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="deleteuseremail"><?php echo $deleteuseremail; ?></textarea>
+							</br><b><?php echo  t('printusername') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+		
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('deletephotoemailcontent') ; ?></div>
+			</div>
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('photodeletedesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/delete_photo_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="deletephotoemailsubject" id="encryption" value="<?php echo $deletephotoemailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="deletephotoemail"><?php echo $deletephotoemail; ?></textarea>
+							</br><b><?php echo  t('printusername') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+		
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('photocommentemailcontent') ; ?></div>
+			</div>
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('photocommentdesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/comment_photo_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="commentphotoemailsubject" id="encryption" value="<?php echo $commentphotoemailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="commentphotoemail"><?php echo $commentphotoemail; ?></textarea>
+							</br><b><?php echo  t('fromusernamephotocomment') ; ?></b>
+							</br><b><?php echo  t('fromuserprofilelink') ; ?></b>
+							</br><b><?php echo  t('tousernamephotoowner') ; ?></b>
+							</br><b><?php echo  t('printcomment') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+		
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('photorateemailcontent') ; ?></div>
+			</div>
+			<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+				<p><b><?php echo  t('photoratedesc') ; ?></b></p>
+				<form action="<?php echo URL::to('/czar/rate_photo_email_content'); ?>" id="form-username" class="form-horizontal" method="post">
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('subject') ; ?> : </label>
+						<div class="controls">
+							<input type="text" class="m-wrap" name="ratephotoemailsubject" id="encryption" value="<?php echo $ratephotoemailsubject; ?>"/>
+						</div>
+					</div>
+									
+					<div class="control-group">
+						<label class="control-label"><?php echo  t('content') ; ?> : </label>
+						<div class="controls">
+							<textarea class="span8 m-wrap" rows="3" name="ratephotoemail"><?php echo $ratephotoemail; ?></textarea>
+							</br><b><?php echo  t('fromusernamephotorater') ; ?></b>
+							</br><b><?php echo  t('fromuserprofilelink') ; ?></b>
+							</br><b><?php echo  t('tousernamephotoowner') ; ?></b>
+							</br><b><?php echo  t('sitelink') ; ?></b>
+						</div>
+					</div>
+								
+					<div class="form-actions">
+						<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+					</div>
+				</form>
+				<!-- END FORM-->  
+			</div>
+		</div>
+	</div>
+</div>
+<?php \Laravel\Section::stop(); ?>
+
+
+<?php \Laravel\Section::start('scripts'); ?>
+
+<script src="<?php echo  url('/assets/js/redactor.min.js') ; ?>"></script>
+
+<script>
+
+$(function(){
+
+$('textarea').redactor();
+
+
+
+
+})
+</script>
+
+<?php \Laravel\Section::stop(); ?>
+
+<?php echo view('czar::pageshell')->with(get_defined_vars())->render(); ?>

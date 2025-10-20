@@ -1,0 +1,127 @@
+
+<?php \Laravel\Section::start('content'); ?>
+
+<div class="row-fluid" style="margin-top:60px;">
+					<div class="span12">
+						<!-- BEGIN PORTLET-->   
+								
+						
+						<div class="portlet box blue">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i><?php echo  t('addnewbanner') ; ?></div>
+								
+							</div>
+							<div class="portlet-body form">
+								<!-- BEGIN FORM-->
+								
+								
+								
+								<form action="<?php echo url('/czar/create_banner'); ?>" id="form-username" class="form-horizontal" method="post">
+									<div class="control-group">
+										<label class="control-label"><?php echo  t('name') ; ?></label>
+										<div class="controls">
+											<input type="text" class="m-wrap" name="name" id="name" value=""/>
+										</div>
+									</div>
+									
+									<div class="control-group">
+										<label class="control-label"><?php echo  t('htmlcode') ; ?></label>
+										<div class="controls">
+											<textarea class="span8 m-wrap" rows="3" name="htmlcode"></textarea>
+										</div>
+									</div>
+								
+									<div class="form-actions">
+										<button type="submit" class="btn green"><?php echo  t('create') ; ?></button>
+									</div>
+								</form>
+								<!-- END FORM-->  
+							</div>
+						</div>
+						
+						
+						<div class="portlet box purple">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i><?php echo  t('currentbanners') ; ?></div>
+								
+							</div>
+							<div class="portlet-body form">
+						
+								<table class="table table-bordered">
+									 <thead>
+									 	<td class="span2"><?php echo  t('name') ; ?></td>
+									 	<td ><?php echo  t('htmlcode') ; ?></td>
+									 	<td class="span2"></td>
+									 </thead>
+									  <tbody>
+										<?php foreach($banners as $banner): ?>
+									  	<tr>
+										 	<td class="span2"><?php echo  $banner->name; ?></td>
+										 	<td >
+										 		<form action="<?php echo url('/czar/update_banner'); ?>" id="form-username" class="form-horizontal" method="post">
+												<input type="hidden" class="m-wrap" name="id" id="id" value="<?php echo $banner->id; ?>">
+												 	<textarea class="span8 m-wrap" rows="3" name="<?php echo $banner->id; ?>"><?php echo  $banner->html_code; ?></textarea>
+												 	</br>
+												 	<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+												 </form>
+											</td>
+											<td><form action="<?php echo URL::to('/czar/delete_banner'); ?>" id="form-delete-banner" class="form-horizontal" method="post">
+								<input type="hidden" class="m-wrap" name="id" id="id" value="<?php echo $banner->id; ?>">
+								<button type="submit" class="btn btn-primary pull-right red"> <?php echo  t('delete') ; ?></button>
+								</form>
+										 	</td>
+										</tr> 
+									 	<?php endforeach; ?>
+									 </tbody>
+								</table>
+							</div>
+						</div>
+						
+						
+						<div class="portlet box blue">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i><?php echo  t('assignadbanners') ; ?></div>
+								
+							</div>
+							<div class="portlet-body form">
+								<!-- BEGIN FORM-->
+								
+								<form action="<?php echo URL::to('/czar/assign_banners'); ?>" id="form-username" class="form-horizontal" method="post">
+									<div class="control-group">
+										<label class="control-label"><?php echo  t('leftsidebar') ; ?></label>
+										<div class="controls">
+											
+											<?php echo  Form::select('leftsidebar', $bannersarray, "$leftsidebar",array('class' => 'span3 chosen')) ; ?>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label"><?php echo  t('topbar') ; ?></label>
+										<div class="controls">
+											
+											<?php echo  Form::select('topbar', $bannersarray , "$topbar",array('class' => 'span3 chosen')) ; ?>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label"><?php echo  t('bottombar') ; ?></label>
+										<div class="controls">
+											
+											<?php echo  Form::select('bottombar', $bannersarray, "$bottombar",array('class' => 'span3 chosen')) ; ?>
+										</div>
+									</div>
+									
+									<div class="form-actions">
+										<button type="submit" class="btn green"><?php echo  t('update') ; ?></button>
+									</div>
+									
+								</form>
+								<!-- END FORM-->  
+							</div>
+						</div>
+			
+					</div>
+				</div>
+
+
+<?php \Laravel\Section::stop(); ?>
+
+<?php echo view('czar::pageshell')->with(get_defined_vars())->render(); ?>

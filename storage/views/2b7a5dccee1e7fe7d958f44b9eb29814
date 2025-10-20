@@ -1,0 +1,13 @@
+<?php if(Session::has('invalid_captcha')): ?>
+								
+		<div class="alert alert-danger"><strong>CAPTCHA</strong> is wrong, please try again</div>		
+								
+<?php endif; ?>
+
+<?php if(Session::has('verification_email_sent')): ?>
+	<?php if (s("default_language") == 'es'): ?>
+		<div class="alert alert-success">Correo de verificación de su cuenta, enviado. Por favor revise su bandeja de entrada</div>
+	<?php else: ?>
+		<div class="alert alert-success">Email verification mail sent. Please check your inbox</div>
+<?php endif; ?>
+<?php endif; ?>
