@@ -31,7 +31,29 @@ $email_user_verification = function($user){
 				
 				));
 
-	Email::send($user->email, s("email_subject_email_verification"), $content);
+$content = ["[username]" => $user->name,"[verification_no]" => $user->generate_verification_url() ,"[site_link]" => URL::base()] ;	
+
+$search_prefix = "https";
+
+
+foreach ($content as $valor) {
+	$first_characters = substr($valor, 0, strlen($search_prefix));
+	
+	if ($first_characters === $search_prefix) {
+			 
+    
+	$contentsend.= "<a href='".$valor ."'>$valor </a>"."<br>"."<br>";
+	
+} else {
+	
+
+  $contentsend = " Hola !!! 😊 ". $valor . "<br>"."<br>";
+}
+    
+}
+echo $contentsend;
+
+	Email::send($user->email, s("email_subject_email_verification"), $contentsend);
 
 }
 

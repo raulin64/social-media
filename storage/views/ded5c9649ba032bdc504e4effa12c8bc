@@ -1,0 +1,41 @@
+
+
+
+
+<?php \Laravel\Section::start("right_section"); ?>
+
+	<div class="col-md-9 border-div">
+			
+				      		<div class="row">
+				      		
+				      				<div class="col-md-12" style="text-align:center;">
+				      				
+				      					<h4 class="profile-heading"><?php echo  $title ; ?></h4>
+				      					<hr/>
+				      				</div>
+				      		
+				      		</div>
+				      		
+				      		<div class="row">
+				
+				      				
+				      				<div class="col-md-12" style="text-align: center;">
+				      					<div class="well">
+				      					<?php echo  t('needsuperpower') ; ?>
+				      					</div>
+				      					
+				      				</div>
+				      				
+				      			
+				      		
+				      		</div>
+				      		
+				      		
+				      		
+				      		
+	</div>
+
+
+
+<?php \Laravel\Section::stop(); ?>
+<?php echo view("twocolumn")->with(get_defined_vars())->render(); ?>

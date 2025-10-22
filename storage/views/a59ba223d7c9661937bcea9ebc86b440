@@ -1,0 +1,65 @@
+
+
+
+
+<?php \Laravel\Section::start("right_section"); ?>
+
+	<div class="col-md-9 border-div">
+			
+				      		<div class="row">
+				      		
+				      				<div class="col-md-12" style="text-align:center;">
+				      				
+				      					<h4 class="profile-heading"><?php echo  t('packages') ; ?></h4>
+				      					<span class="pull-right"><?php echo  t('yourcredits') ; ?>: <?php echo  Auth::user()->credits() ; ?></span>
+				      					<hr/>
+				      				</div>
+				      		
+				      		</div>
+				      		
+				      		<div class="row">
+				      			
+				      				<table class="table">
+				      				<?php if(RewardPackage::all()): ?>
+										<thead>
+										<tr>
+										  <th><?php echo  t('rewards') ; ?></th>
+										  <th><?php echo  t('credits') ; ?></th>
+										</tr>
+										  </thead>
+									<?php endif; ?>
+											<tbody>
+				      				<?php if (count((array)RewardPackage::all()) > 0): ?><?php foreach(RewardPackage::all() as $package): ?>
+				      					<tr>
+				      						<td><?php echo  t(RewardPackage::getreasons($package->reason)); ?></td>
+				      						<td><?php echo  $package->credits ; ?></td>
+				      					</tr>
+				      				
+				      				<?php endforeach; ?><?php else: ?>
+				      				
+				      				<div class="col-md-12" style="text-align: center;">
+				      					<div class="well">
+				      					<?php echo  t('noneyet') ; ?>
+				      					</div>
+				      					
+				      				</div>
+				      				<?php endif; ?>
+				      				</tbody>
+				      				</table>
+				      				
+				      			
+				      		
+				      		</div>
+				      		
+				      		
+				      	
+				      		
+				      		
+				      		
+				      		
+	</div>
+
+
+
+<?php \Laravel\Section::stop(); ?>
+<?php echo view("twocolumn")->with(get_defined_vars())->render(); ?>

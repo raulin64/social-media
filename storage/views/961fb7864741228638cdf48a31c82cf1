@@ -1,0 +1,103 @@
+
+
+
+
+<?php \Laravel\Section::start("right_section"); ?>
+
+	<div class="col-md-9 border-div">
+			
+				      		<div class="row">
+				      		
+				      				<div class="col-md-12" style="text-align:center;">
+				      				
+				      					<h4 class="profile-heading"><?php echo  $title ; ?></h4>
+				      					<hr/>
+				      				</div>
+				      		
+				      		</div>
+				      		
+				      		<div class="row">
+				      			
+				      				
+				      				<?php if (count((array)$users) > 0): ?><?php foreach($users as $user): ?>
+				      				<div class="col-md-12">
+				      					<div class="row" style="margin-bottom:5px;">
+				      						
+				      						<div class="col-md-4">
+				      							<div class="pull-right"  style="background: url(<?php echo  $user->smallPhoto() ; ?>);background-size: cover;height: 180px;width: 200px;">
+				      							</div>
+				      						</div>
+				      						<div class="col-md-6">
+												<div class="row">
+														
+															<ul class="top-buffer" style="list-style-type: none;padding: 0px;font-size: 0.8em;">
+																	<li><span class="lead"><a href="<?php echo  $user->profile_url() ; ?>"><?php echo  $user->name ; ?>, <?php echo  $user->age ; ?></span></a></li>
+																	<li><i class="fa fa-home"></i> <?php echo  t('livesin') ; ?> <?php echo  $user->city ; ?></li>
+																	<li><i class="fa fa-heart"></i> <?php echo  $user->profile->relationship_status() ; ?></li>
+																	
+																</ul>
+												</div>
+				      							<div class="row">
+				      																<div class="btn-group top-buffer">
+																					  <button type="button" class="btn btn-default btn-xs chat-now-btn" data-user-id="<?php echo  $user->id ; ?>"><i class="fa fa-comment fa-2 text-primary"></i> <?php echo  t('chatnow') ; ?></button>
+																					   <?php if(!Auth::user()->isMeet($user->id)): ?>
+																					  <button type="button" class="btn btn-default btn-xs meet-me-btn" data-user-id="<?php echo  $user->id ; ?>"><i class="fa fa-check fa-2 text-success"></i> <?php echo  t('meet') ; ?> <?php echo  $user->thirdPersonGender() ; ?></button>
+																					  <?php endif; ?>
+																					<?php if(!Auth::user()->isFavourite($user->id)): ?>
+																					  <button type="button" class="btn btn-default btn-xs add-favourite-btn" data-user-id="<?php echo  $user->id ; ?>"><i class="fa fa-star fa-2 text-warning"></i> <?php echo  t('addasfavorite') ; ?></button>
+																					  <?php else: ?>
+																					  <button type="button" class="btn btn-default btn-xs unfavourite-btn" data-user-id="<?php echo  $user->id ; ?>"><i class="fa fa-times-circle-o fa-2 text-danger"></i> <?php echo  t('unfavorite') ; ?></button>
+																					  <?php endif; ?>
+																					  <div class="btn-group">
+																						  <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown">
+																							or<span class="caret"></span>
+																						  </button>
+																						  <ul class="dropdown-menu" role="menu">
+																							<!-- <li><a href="javascript:;" class="give-gift-btn"><i class="fa fa-gift fa-2 text-danger"></i> Give a Gift</a></li> -->
+																							<?php if(!Auth::user()->iBlocked($user->id)): ?>
+																							<li><a href="javascript:;" class="block-btn" data-user-id="<?php echo  $user->id ; ?>"><i class="fa fa-minus-circle fa-2 text-danger"></i> <?php echo  t('block') ; ?></a></li>
+																							<?php else: ?>
+																							<li><a href="javascript:;" class="unblock-btn" data-user-id="<?php echo  $user->id ; ?>"><i class="fa fa-plus-circle fa-2 text-danger"></i> <?php echo  t('unblock') ; ?></a></li>
+																							<?php endif; ?>
+																							<li><a href="javascript:;" class="report-abuse-btn" data-user-id="<?php echo  $user->id ; ?>" data-username="<?php echo  $user->name ; ?>"><i class="fa fa-exclamation-triangle fa-2 text-danger"></i> <?php echo  t('reportabuse') ; ?></a></li>
+																						  </ul>
+																						</div>
+																					</div>
+												</div>
+
+												
+				      						</div>
+				      				
+				      						
+				      					
+				      					</div>
+				      					<div class="row">
+													<hr/>
+												</div>
+										
+				      				</div>
+				      				
+				      				<?php endforeach; ?><?php else: ?>
+				      				
+				      				<div class="col-md-12" style="text-align: center;">
+				      					<div class="well">
+				      					<?php echo  t('noneyet') ; ?>
+				      					</div>
+				      					
+				      				</div>
+				      				<?php endif; ?>
+				      				
+				      				
+				      			
+				      		
+				      		</div>
+				      		
+				      		
+				      		
+				      		
+	</div>
+
+
+
+<?php \Laravel\Section::stop(); ?>
+<?php echo view("twocolumn")->with(get_defined_vars())->render(); ?>

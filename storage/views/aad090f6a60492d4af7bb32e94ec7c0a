@@ -1,0 +1,79 @@
+
+
+
+
+<?php \Laravel\Section::start("right_section"); ?>
+
+	<div class="col-md-9 border-div">
+			
+				      		<div class="row">
+				      		
+				      				<div class="col-md-12" style="text-align:center;">
+				      				
+				      					<h4 class="profile-heading"><?php echo  t('packages') ; ?></h4>
+				      					<span class="pull-right"><?php echo  t('yourcredits') ; ?>: <?php echo  Auth::user()->credits() ; ?></span>
+				      					<hr/>
+				      				</div>
+				      		
+				      		</div>
+				      		
+				      		<div class="row">
+				      			
+				      				<table class="table">
+				      				<?php if(Package::all()): ?>
+										<thead>
+										<tr>
+										  <th><?php echo  t('credits') ; ?></th>
+										  <th><?php echo  t('cost') ; ?></th>
+										  <th><?php echo  t('payment') ; ?></th>
+										</tr>
+										  </thead>
+									<?php endif; ?>
+											<tbody>
+				      				<?php if (count((array)Package::all()) > 0): ?><?php foreach(Package::all() as $package): ?>
+				      					<tr>
+				      						<td><?php echo  $package->credits ; ?></td>
+				      						<td><span class=money>EUR <?php echo  $package->cost ; ?>   </td>
+				      						<td>
+				      						<form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+											<input type="hidden" name="cmd" value="_xclick">
+											<input type="hidden" name="business" value="<?php echo  s('paypalusername') ; ?>">
+											<input type="hidden" name="currency_code" value="EUR">
+											<input type="hidden" name="item_name" value="<?php echo  $package->credits; ?>">
+											<input type="hidden" name="item_number" value="<?php echo  $package->credits; ?>">
+											<input type="hidden" name="amount" value="<?php echo  $package->cost ; ?>">
+
+											<input type="submit" class="btn btn-primary" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" value='<?php echo t("payvia"); ?> PayPal' />
+										</form>
+				      						
+				      						</td>
+				      					</tr>
+				      				
+				      				<?php endforeach; ?><?php else: ?>
+				      				
+				      				<div class="col-md-12" style="text-align: center;">
+				      					<div class="well">
+				      					<?php echo  t('noneyet') ; ?>
+				      					</div>
+				      					
+				      				</div>
+				      				<?php endif; ?>
+				      				</tbody>
+				      				</table>
+				      				
+				      			
+				      		
+				      		</div>
+				      		
+				      		
+				      	
+				      		
+				      		
+				      		
+				      		
+	</div>
+
+
+
+<?php \Laravel\Section::stop(); ?>
+<?php echo view("twocolumn")->with(get_defined_vars())->render(); ?>

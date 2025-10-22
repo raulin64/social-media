@@ -1,8 +1,7 @@
-@layout('twocolumn')
 
-@section('styles')
+<?php \Laravel\Section::start('styles'); ?>
 
-	<link href="{{ asset('assets/css/image-picker.css') }}" rel="stylesheet" />
+	<link href="<?php echo  asset('assets/css/image-picker.css') ; ?>" rel="stylesheet" />
 	<style>
 	
 	.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
@@ -10,9 +9,9 @@
 	
 	</style>
 
-@endsection
+<?php \Laravel\Section::stop(); ?>
 
-@section('right_section')
+<?php \Laravel\Section::start('right_section'); ?>
 
 
 				      	<div class="col-md-9 border-div">
@@ -21,12 +20,12 @@
 
 								<div class="col-md-12">
 
-										<h3>{{ $profile->user->name }}, {{ $profile->user->age }} <small>
-										@if($profile->user->isOnline())
-										<div class="status-online"></div>{{ t('iamonline') }}
-										@else
-										{{ t('lastonline') }} {{ $profile->user->lastLoginDays() }}
-										@endif
+										<h3><?php echo  $profile->user->name ; ?>, <?php echo  $profile->user->age ; ?> <small>
+										<?php if($profile->user->isOnline()): ?>
+										<div class="status-online"></div><?php echo  t('iamonline') ; ?>
+										<?php else: ?>
+										<?php echo  t('lastonline') ; ?> <?php echo  $profile->user->lastLoginDays() ; ?>
+										<?php endif; ?>
 										</small></h3>
 
 								</div>
@@ -40,43 +39,43 @@
 									<div class="col-md-12">
 
 										<ul class="nav nav-tabs pull-right" >
-										  <li class="active"><a href="{{ url('/profile/'.$profile->user->id) }}"><span class="glyphicon glyphicon-user"></span> {{ t('profile') }}</a></li>
-										  <li><a href="{{ url('/album/'.$profile->user->id) }}"><span class="glyphicon glyphicon-picture"></span> {{ t('photos') }}</a></li>
+										  <li class="active"><a href="<?php echo  url('/profile/'.$profile->user->id) ; ?>"><span class="glyphicon glyphicon-user"></span> <?php echo  t('profile') ; ?></a></li>
+										  <li><a href="<?php echo  url('/album/'.$profile->user->id) ; ?>"><span class="glyphicon glyphicon-picture"></span> <?php echo  t('photos') ; ?></a></li>
 										</ul>
 
-									@if(!Auth::guest())
-										@if($profile->user->id != Auth::user()->id)
+									<?php if(!Auth::guest()): ?>
+										<?php if($profile->user->id != Auth::user()->id): ?>
 										<div class="btn-group">
-										  <button type="button" class="btn btn-default btn-xs chat-now-btn" data-user-id="{{ $profile->user->id }}"><i class="fa fa-comment fa-2 text-primary"></i> {{ t('chatnow') }}</button>
-										  @if(!Auth::user()->isMeet($profile->user->id))
-										  <button type="button" class="btn btn-default btn-xs meet-me-btn" data-user-id="{{ $profile->user->id }}"><i class="fa fa-check fa-2 text-success"></i> {{ t('meet') }} {{ $profile->user->thirdPersonGender() }}</button>
-										  @endif
-										   @if(!Auth::user()->isFavourite($profile->user->id))
-										  <button type="button" class="btn btn-default btn-xs add-favourite-btn" data-user-id="{{ $profile->user->id }}"><i class="fa fa-star fa-2 text-warning"></i> {{ t('addasfavorite') }}</button>
-										  @else
-										  <button type="button" class="btn btn-default btn-xs unfavourite-btn" data-user-id="{{ $profile->user->id }}"><i class="fa fa-times-circle-o fa-2 text-danger"></i> {{ t('unfavorite') }}</button>
-										  @endif
+										  <button type="button" class="btn btn-default btn-xs chat-now-btn" data-user-id="<?php echo  $profile->user->id ; ?>"><i class="fa fa-comment fa-2 text-primary"></i> <?php echo  t('chatnow') ; ?></button>
+										  <?php if(!Auth::user()->isMeet($profile->user->id)): ?>
+										  <button type="button" class="btn btn-default btn-xs meet-me-btn" data-user-id="<?php echo  $profile->user->id ; ?>"><i class="fa fa-check fa-2 text-success"></i> <?php echo  t('meet') ; ?> <?php echo  $profile->user->thirdPersonGender() ; ?></button>
+										  <?php endif; ?>
+										   <?php if(!Auth::user()->isFavourite($profile->user->id)): ?>
+										  <button type="button" class="btn btn-default btn-xs add-favourite-btn" data-user-id="<?php echo  $profile->user->id ; ?>"><i class="fa fa-star fa-2 text-warning"></i> <?php echo  t('addasfavorite') ; ?></button>
+										  <?php else: ?>
+										  <button type="button" class="btn btn-default btn-xs unfavourite-btn" data-user-id="<?php echo  $profile->user->id ; ?>"><i class="fa fa-times-circle-o fa-2 text-danger"></i> <?php echo  t('unfavorite') ; ?></button>
+										  <?php endif; ?>
 										  <div class="btn-group">
 											  <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown">
 												or<span class="caret"></span>
 											  </button>
 											  <ul class="dropdown-menu" role="menu">
 												<!-- <li><a href="javascript:;" class="give-gift-btn"><i class="fa fa-gift fa-2 text-danger"></i> Give a Gift</a></li> -->
-												@if(!Auth::user()->iBlocked($profile->user->id))
-												<li><a href="javascript:;" class="block-btn" data-user-id="{{ $profile->user->id }}"><i class="fa fa-minus-circle fa-2 text-danger"></i> {{ t('block') }}</a></li>
-												@else
-												<li><a href="javascript:;" class="unblock-btn" data-user-id="{{ $profile->user->id }}"><i class="fa fa-plus-circle fa-2 text-danger"></i> {{ t('unblock') }}</a></li>
-												@endif
-												<li><a href="javascript:;" class="report-abuse-btn" data-user-id="{{ $profile->user->id }}" data-username="{{ $profile->user->name }}"><i class="fa fa-exclamation-triangle fa-2 text-danger"></i> {{ t('reportabuse') }}</a></li>
+												<?php if(!Auth::user()->iBlocked($profile->user->id)): ?>
+												<li><a href="javascript:;" class="block-btn" data-user-id="<?php echo  $profile->user->id ; ?>"><i class="fa fa-minus-circle fa-2 text-danger"></i> <?php echo  t('block') ; ?></a></li>
+												<?php else: ?>
+												<li><a href="javascript:;" class="unblock-btn" data-user-id="<?php echo  $profile->user->id ; ?>"><i class="fa fa-plus-circle fa-2 text-danger"></i> <?php echo  t('unblock') ; ?></a></li>
+												<?php endif; ?>
+												<li><a href="javascript:;" class="report-abuse-btn" data-user-id="<?php echo  $profile->user->id ; ?>" data-username="<?php echo  $profile->user->name ; ?>"><i class="fa fa-exclamation-triangle fa-2 text-danger"></i> <?php echo  t('reportabuse') ; ?></a></li>
 											  </ul>
 											</div>
 										</div>
-										@else
-										{{ Form::open('/user/update_profile', 'POST', array('id'=>'editProfileForm' )) }}
+										<?php else: ?>
+										<?php echo  Form::open('/user/update_profile', 'POST', array('id'=>'editProfileForm' )) ; ?>
 										<input type="submit" id="save-changes-btn" class="btn btn-small btn-primary btn-xs" value="Guardar Cambios" />
-										@endif
+										<?php endif; ?>
 
-									@endif
+									<?php endif; ?>
 									</div>
 									
 							</div>
@@ -94,52 +93,52 @@
 												<div class="col-md-12">
 												<div class="alert alert-success" style="text-align: center;">
 
-												@if(Auth::guest())
+												<?php if(Auth::guest()): ?>
 
-													{{ t('wants') }} {{ $whyamihere }}
-												@else
+													<?php echo  t('wants') ; ?> <?php echo  $whyamihere ; ?>
+												<?php else: ?>
 
 
-												@if($profile->user->id != Auth::user()->id)
-												{{ t('wants') }} {{ $whyamihere }}
-												@else
-												{{ t('iamhereto') }} {{ Form::select('whyamihere', Profile::profile_fields("whyamihere"), "$profile->whyamihere") }}
-												@endif
+												<?php if($profile->user->id != Auth::user()->id): ?>
+												<?php echo  t('wants') ; ?> <?php echo  $whyamihere ; ?>
+												<?php else: ?>
+												<?php echo  t('iamhereto') ; ?> <?php echo  Form::select('whyamihere', Profile::profile_fields("whyamihere"), "$profile->whyamihere") ; ?>
+												<?php endif; ?>
 
-												@endif
+												<?php endif; ?>
 												</div>
 												</div>
 												</div>
 
 												<div class="row">
 												<div class="col-md-12">
-												<img class="img-responsive" src="{{ $profile->user->mediumPhoto() }}">
+												<img class="img-responsive" src="<?php echo  $profile->user->mediumPhoto() ; ?>">
 												</div>
 												</div>
 												
 												<div class="row">
 
-												@if(!Auth::guest())
+												<?php if(!Auth::guest()): ?>
 
-												@if($profile->user->id == Auth::user()->id)
+												<?php if($profile->user->id == Auth::user()->id): ?>
 												<div class="col-md-5 col-md-offset-3 top-buffer">
 												
-												<button id="set-profile-picture-btn" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#uploadPhoto">{{ t('changeprofilepicture') }}</button>
+												<button id="set-profile-picture-btn" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#uploadPhoto"><?php echo  t('changeprofilepicture') ; ?></button>
 												
 																<div class="modal fade" id="uploadPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 																  <div class="modal-dialog">
 																	<div class="modal-content">
 																	  <div class="modal-header">
 																		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-																		<h4 class="modal-title" id="myModalLabel">{{ t('uploadphoto') }}</h4>
+																		<h4 class="modal-title" id="myModalLabel"><?php echo  t('uploadphoto') ; ?></h4>
 																	  </div>
 																	  <div class="modal-body">
 																			
-																			<div class="alert alert-danger upload-error" style="display:none" id="nofile-error">{{ t('pleaseselectfile') }}</div>
-																			<div class="alert alert-danger upload-error" style="display:none" id="type-error">{{ t('imagetypeerror') }}</div>
-																			<div class="alert alert-danger upload-error" style="display:none" id="size-error">{{ t('imagesizeerror') }}</div>
-																			<div class="alert alert-danger upload-error" style="display:none" id="dimension-error">{{ t('imagepixelerror') }}</div>
-																			<div class="alert alert-danger upload-error" style="display:none" id="other-error">{{ t('somethingwrong') }}</div>
+																			<div class="alert alert-danger upload-error" style="display:none" id="nofile-error"><?php echo  t('pleaseselectfile') ; ?></div>
+																			<div class="alert alert-danger upload-error" style="display:none" id="type-error"><?php echo  t('imagetypeerror') ; ?></div>
+																			<div class="alert alert-danger upload-error" style="display:none" id="size-error"><?php echo  t('imagesizeerror') ; ?></div>
+																			<div class="alert alert-danger upload-error" style="display:none" id="dimension-error"><?php echo  t('imagepixelerror') ; ?></div>
+																			<div class="alert alert-danger upload-error" style="display:none" id="other-error"><?php echo  t('somethingwrong') ; ?></div>
 														
 																			
 													
@@ -149,13 +148,13 @@
 																							<div class="panel-heading">
 																							  <h4 class="panel-title">
 																								<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-																								  {{ t('uploadfromcomputer') }}
+																								  <?php echo  t('uploadfromcomputer') ; ?>
 																								</a>
 																							  </h4>
 																							</div>
 																							<div id="collapseOne" class="panel-collapse collapse in">
 																							  <div class="panel-body">
-																								{{ Form::file('photo', array("title"=>'Choose your file', "id"=>"photo")) }}
+																								<?php echo  Form::file('photo', array("title"=>'Choose your file', "id"=>"photo")) ; ?>
 																							  </div>
 																							</div>
 																						  </div>
@@ -163,7 +162,7 @@
 																							<div class="panel-heading">
 																							  <h4 class="panel-title">
 																								<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="masonryImageSelect();">
-																								  {{ t('selectfromalbum') }}
+																								  <?php echo  t('selectfromalbum') ; ?>
 																								</a>
 																							  </h4>
 																							</div>
@@ -171,12 +170,12 @@
 																							  <div class="panel-body">
 																							  		<select id="user-photo-select" class="image-picker masonry show-html" >
 																							  		<option value=""></option>
-																									@forelse(Auth::user()->photos() as $photo)
-																									 <option data-img-src="{{ $photo->thumbnail() }}" value="{{ $photo->photo_id }}"></option>
+																									<?php if (count((array)Auth::user()->photos()) > 0): ?><?php foreach(Auth::user()->photos() as $photo): ?>
+																									 <option data-img-src="<?php echo  $photo->thumbnail() ; ?>" value="<?php echo  $photo->photo_id ; ?>"></option>
 																									
-																									@empty
+																									<?php endforeach; ?><?php else: ?>
 																									
-																									@endforelse
+																									<?php endif; ?>
 																									</select>
 																							  </div>
 																							</div>
@@ -187,8 +186,8 @@
 													
 																	  </div>
 																	  <div class="modal-footer">
-																		<button type="button" class="btn btn-default" data-dismiss="modal">{{ t('close') }}</button>
-																		<button id="submit-btn" class="btn btn-primary">{{ t('upload') }}</button>
+																		<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo  t('close') ; ?></button>
+																		<button id="submit-btn" class="btn btn-primary"><?php echo  t('upload') ; ?></button>
 																	
 																	  </div>
 																	</div><!-- /.modal-content -->
@@ -196,13 +195,13 @@
 																</div><!-- /.modal -->
 												
 												</div>
-												@endif
+												<?php endif; ?>
 												
-												@if($profile->user->id != Auth::user()->id)
+												<?php if($profile->user->id != Auth::user()->id): ?>
 												
 												<div class="col-md-12 col-md-offset-3 top-buffer">
 												
-													<button class="btn btn-warning" id="give-gift-btn" data-toggle="modal" data-target="#giveGiftModal" onclick="setTimeout(masonryImageSelect, 200);"><i class="fa fa-gift"></i> {{ t('givegift') }}</button>
+													<button class="btn btn-warning" id="give-gift-btn" data-toggle="modal" data-target="#giveGiftModal" onclick="setTimeout(masonryImageSelect, 200);"><i class="fa fa-gift"></i> <?php echo  t('givegift') ; ?></button>
 													
 													
 																<div class="modal fade" id="giveGiftModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -210,32 +209,32 @@
 																	<div class="modal-content">
 																	  <div class="modal-header">
 																		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-																		<h4 class="modal-title" >{{ t('sendagift') }}</h4>
+																		<h4 class="modal-title" ><?php echo  t('sendagift') ; ?></h4>
 																	  </div>
 																	  <div class="modal-body" >
 														
-																					<div class="alert alert-danger gift-error" style="display:none" id="selectgift-error">{{ t('pleaseselectgift') }}</div>
-																					<div class="alert alert-danger gift-error" style="display:none" id="giftbalance-error">{{ t('balancelow') }}. {{ t('yourbalanceis') }} {{ Auth::user()->credits() }}</div>
+																					<div class="alert alert-danger gift-error" style="display:none" id="selectgift-error"><?php echo  t('pleaseselectgift') ; ?></div>
+																					<div class="alert alert-danger gift-error" style="display:none" id="giftbalance-error"><?php echo  t('balancelow') ; ?>. <?php echo  t('yourbalanceis') ; ?> <?php echo  Auth::user()->credits() ; ?></div>
 																					
 																							  		<select  id="gift-select" class="image-picker masonry show-html show-labels" >
 																							  		<option value=""></option>
-																									@forelse(Gift::all() as $gift)
+																									<?php if (count((array)Gift::all()) > 0): ?><?php foreach(Gift::all() as $gift): ?>
 																									
-																									 <option data-img-label="{{ t('cost') }} : {{ $gift->show_price() }}" data-img-src="{{ $gift->iconUrl() }}" value="{{ $gift->id }}">{{ t('cost') }} : {{ $gift->show_price() }}</option>
+																									 <option data-img-label="<?php echo  t('cost') ; ?> : <?php echo  $gift->show_price() ; ?>" data-img-src="<?php echo  $gift->iconUrl() ; ?>" value="<?php echo  $gift->id ; ?>"><?php echo  t('cost') ; ?> : <?php echo  $gift->show_price() ; ?></option>
 																									 
 																									
 																									
-																									@empty
-																										{{ t('nogiftsavailable') }}
-																									@endforelse
+																									<?php endforeach; ?><?php else: ?>
+																										<?php echo  t('nogiftsavailable') ; ?>
+																									<?php endif; ?>
 																									 </select> 
 																				
 												
 													
 																	  </div>
 																	  <div class="modal-footer">
-																		<button type="button" class="btn btn-default" data-dismiss="modal">{{ t('close') }}</button>
-																		<button id="gift-submit-btn" class="btn btn-primary">{{ t('send') }}</button>
+																		<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo  t('close') ; ?></button>
+																		<button id="gift-submit-btn" class="btn btn-primary"><?php echo  t('send') ; ?></button>
 																	
 																	  </div>
 																	</div><!-- /.modal-content -->
@@ -248,22 +247,22 @@
 												
 												</div>
 												
-												@endif
+												<?php endif; ?>
 												
 												
 												<div class="col-md-12  top-buffer">
-													<h4 class="profile-heading">{{ t('giftsireceived') }}</h4>
+													<h4 class="profile-heading"><?php echo  t('giftsireceived') ; ?></h4>
 														<div class="row">
-													@forelse($profile->user->gifts_received() as $gift)
+													<?php if (count((array)$profile->user->gifts_received()) > 0): ?><?php foreach($profile->user->gifts_received() as $gift): ?>
 													
 														<div class="col-md-12">
-														<img class="user_interaction user_gift" src="{{ $gift->iconUrl() }}" style="height: 50px; width: 50px;margin: 10px;" data-gift-id="{{ $gift->ug_id }}" title="{{ t('giftedby') }} {{ $gift->from_username }}"/>
+														<img class="user_interaction user_gift" src="<?php echo  $gift->iconUrl() ; ?>" style="height: 50px; width: 50px;margin: 10px;" data-gift-id="<?php echo  $gift->ug_id ; ?>" title="<?php echo  t('giftedby') ; ?> <?php echo  $gift->from_username ; ?>"/>
 														</div>
-													@empty
+													<?php endforeach; ?><?php else: ?>
 													
-													<p style="margin:10px;">{{ t('none') }}</p>
+													<p style="margin:10px;"><?php echo  t('none') ; ?></p>
 													
-													@endforelse
+													<?php endif; ?>
 														</div>
 													
 													
@@ -275,11 +274,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">{{t('removegift')}}?</h4>
+        <h4 class="modal-title" id="myModalLabel"><?php echo t('removegift'); ?>?</h4>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">{{ t('close') }}</button>
-        <button type="button" id="remove-gift-btn" class="btn btn-primary">{{ t('remove') }}</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo  t('close') ; ?></button>
+        <button type="button" id="remove-gift-btn" class="btn btn-primary"><?php echo  t('remove') ; ?></button>
       </div>
     </div>
   </div>
@@ -289,7 +288,7 @@
 
 
 
-												@endif
+												<?php endif; ?>
 												
 												
 												</div>		
@@ -303,39 +302,39 @@
 											
 													<div class="row">
 													<div class="col-md-12">
-															<h5 class="profile-heading">{{ t('location') }}:
-																@if(!Auth::guest())
-															@if($profile->user->id == Auth::user()->id) 
-															  <input type="text" id="city" name="city" value="{{ $profile->user->city }}" /> <button id="update_current_location" class="btn btn-warning btn-xs">{{ t('updatetocurrentlocation') }}</button>
-															   @else <small id="current_location">{{ $profile->user->city }}</small> 
-															    @endif
-															    @else
+															<h5 class="profile-heading"><?php echo  t('location') ; ?>:
+																<?php if(!Auth::guest()): ?>
+															<?php if($profile->user->id == Auth::user()->id): ?> 
+															  <input type="text" id="city" name="city" value="<?php echo  $profile->user->city ; ?>" /> <button id="update_current_location" class="btn btn-warning btn-xs"><?php echo  t('updatetocurrentlocation') ; ?></button>
+															   <?php else: ?> <small id="current_location"><?php echo  $profile->user->city ; ?></small> 
+															    <?php endif; ?>
+															    <?php else: ?>
 
-															    	<small id="current_location">{{ $profile->user->city }}</small> 
+															    	<small id="current_location"><?php echo  $profile->user->city ; ?></small> 
 
-															    @endif
+															    <?php endif; ?>
 															</h5>
 															
-															@if(!Auth::guest())
-															 @if($profile->user->id == Auth::user()->id)
+															<?php if(!Auth::guest()): ?>
+															 <?php if($profile->user->id == Auth::user()->id): ?>
 															 	<div id="change_location">
 															 	
-															 	<input type="hidden" id="country" name="country" value="{{ $profile->user->country }}" />
-															 	<input type="hidden" id="lat" name="lat" value="{{ $profile->user->lat }}" />
-															 	<input type="hidden" id="lng" name="lng" value="{{ $profile->user->lng }}" />
+															 	<input type="hidden" id="country" name="country" value="<?php echo  $profile->user->country ; ?>" />
+															 	<input type="hidden" id="lat" name="lat" value="<?php echo  $profile->user->lat ; ?>" />
+															 	<input type="hidden" id="lng" name="lng" value="<?php echo  $profile->user->lng ; ?>" />
 															 	<div id="map-canvas" class="col-md-12" style="height:300px;"> </div>
 															 	
 															 	</div>
-															 @else
-															 <img class="img-responsive" id="current_user_map" src="http://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C{{$profile->user->lat}},{{$profile->user->lng}}&sensor=false" />
-															 @endif
+															 <?php else: ?>
+															 <img class="img-responsive" id="current_user_map" src="http://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C<?php echo $profile->user->lat; ?>,<?php echo $profile->user->lng; ?>&sensor=false" />
+															 <?php endif; ?>
 
-															 @else
+															 <?php else: ?>
 
-															  <img class="img-responsive" id="current_user_map" src="http://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C{{$profile->user->lat}},{{$profile->user->lng}}&sensor=false" />
+															  <img class="img-responsive" id="current_user_map" src="http://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C<?php echo $profile->user->lat; ?>,<?php echo $profile->user->lng; ?>&sensor=false" />
 
 
-															 @endif
+															 <?php endif; ?>
 															
 															
 
@@ -345,15 +344,15 @@
 							
 													<div class="row">
 													<div class="col-md-12">
-															<h5 class="profile-heading">{{ t('interests') }}</h5>
+															<h5 class="profile-heading"><?php echo  t('interests') ; ?></h5>
 															<div class="row">
 																<div class="col-md-12">
 
-																	@if(!Auth::guest())
+																	<?php if(!Auth::guest()): ?>
 
-																	 @if($profile->user->id == Auth::user()->id)
+																	 <?php if($profile->user->id == Auth::user()->id): ?>
 																		<input id="interests" type="text" />
-																		<button type="button" id="add-interest-btn" class="btn btn-warning btn-xs">{{ t('addinterest') }}</button>
+																		<button type="button" id="add-interest-btn" class="btn btn-warning btn-xs"><?php echo  t('addinterest') ; ?></button>
 																		
 																		
 																		
@@ -363,12 +362,12 @@
 																	<div class="modal-content">
 																	  <div class="modal-header">
 																		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-																		<h4 class="modal-title">{{ t('addinterest') }} <span id="new-interest-label"></span></h4>
+																		<h4 class="modal-title"><?php echo  t('addinterest') ; ?> <span id="new-interest-label"></span></h4>
 																	  </div>
 																	  <div class="modal-body">
 																			
-																			<label>{{ t("selectcategory") }}</label>
-																			{{ Form::select('interest_category', InterestCategory::lists('name','code'), null ,array('id'=>'interests_category')) }}
+																			<label><?php echo  t("selectcategory") ; ?></label>
+																			<?php echo  Form::select('interest_category', InterestCategory::lists('name','code'), null ,array('id'=>'interests_category')) ; ?>
 																	
 													
 													
@@ -377,8 +376,8 @@
 													
 																	  </div>
 																	  <div class="modal-footer">
-																		<button type="button" class="btn btn-default" data-dismiss="modal">{{ t('close') }}</button>
-																		<button id="add-new-interest-btn" class="btn btn-primary">{{ t('add') }}</button>
+																		<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo  t('close') ; ?></button>
+																		<button id="add-new-interest-btn" class="btn btn-primary"><?php echo  t('add') ; ?></button>
 																	
 																	  </div>
 																	</div><!-- /.modal-content -->
@@ -390,35 +389,35 @@
 																		
 																		
 																		
-																	@endif
+																	<?php endif; ?>
 
-																	@endif
+																	<?php endif; ?>
 																</div>
 															</div>
 															<div class="row top-buffer">
 																<div class="col-md-12">
 																
-																@foreach($profile->user->interests() as $interest)
+																<?php foreach($profile->user->interests() as $interest): ?>
 																	
-																	@if(!Auth::guest())
+																	<?php if(!Auth::guest()): ?>
 
-																	@if($profile->user->id == Auth::user()->id)
+																	<?php if($profile->user->id == Auth::user()->id): ?>
 																	
-																	            <button type="button" class="btn btn-labeled btn-primary user-interest-del" data-interest-id="{{ $interest->id }}">
-                											<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>{{ $interest->interest }}</button>
+																	            <button type="button" class="btn btn-labeled btn-primary user-interest-del" data-interest-id="<?php echo  $interest->id ; ?>">
+                											<span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span><?php echo  $interest->interest ; ?></button>
 																		
-																	@else
+																	<?php else: ?>
 																	
-															<span class="label label-primary interest">{{ $interest->interest }}</span>
+															<span class="label label-primary interest"><?php echo  $interest->interest ; ?></span>
 															
-																	@endif
+																	<?php endif; ?>
 
-																	@else
+																	<?php else: ?>
 
-																	<span class="label label-primary interest">{{ $interest->interest }}</span>
+																	<span class="label label-primary interest"><?php echo  $interest->interest ; ?></span>
 
-																	@endif
-																@endforeach
+																	<?php endif; ?>
+																<?php endforeach; ?>
 
 																</div>
 															</div>
@@ -429,20 +428,20 @@
 
 													<div class="row">
 													<div class="col-md-12">
-															<h5 class="profile-heading">{{ t('aboutme') }}</h5>
+															<h5 class="profile-heading"><?php echo  t('aboutme') ; ?></h5>
 															<small class="text-muted">
 															
 															
 
-															 @if(Auth::guest() || ($profile->user->id != Auth::user()->id))
-																@if($profile->aboutme != null)
-																	{{$profile->aboutme}}
-																@else
-																	{{ t('willreveallater')}}
-																@endif
-															@else
-																<textarea class="col-md-12" rows="3" name="aboutme">{{ $profile->aboutme  }}</textarea>
-															@endif
+															 <?php if(Auth::guest() || ($profile->user->id != Auth::user()->id)): ?>
+																<?php if($profile->aboutme != null): ?>
+																	<?php echo $profile->aboutme; ?>
+																<?php else: ?>
+																	<?php echo  t('willreveallater'); ?>
+																<?php endif; ?>
+															<?php else: ?>
+																<textarea class="col-md-12" rows="3" name="aboutme"><?php echo  $profile->aboutme  ; ?></textarea>
+															<?php endif; ?>
 															
 															</small>
 
@@ -451,17 +450,17 @@
 
 													<div class="row">
 													<div class="col-md-12">
-															<h5 class="profile-heading">{{ t('interestedin') }}</h5>
+															<h5 class="profile-heading"><?php echo  t('interestedin') ; ?></h5>
 															<small class="text-muted">
-															 @if(Auth::guest() || ($profile->user->id != Auth::user()->id))
-																@if($profile->interestedin != null)
-																{{$profile->interestedin}}
-																@else
-																{{ t('willreveallater')}}
-																@endif
-															@else
-																<textarea class="col-md-12" rows="3" name="interestedin">{{ $profile->interestedin  }}</textarea>
-															@endif
+															 <?php if(Auth::guest() || ($profile->user->id != Auth::user()->id)): ?>
+																<?php if($profile->interestedin != null): ?>
+																<?php echo $profile->interestedin; ?>
+																<?php else: ?>
+																<?php echo  t('willreveallater'); ?>
+																<?php endif; ?>
+															<?php else: ?>
+																<textarea class="col-md-12" rows="3" name="interestedin"><?php echo  $profile->interestedin  ; ?></textarea>
+															<?php endif; ?>
 															
 															
 															
@@ -475,7 +474,7 @@
 
 													<div class="row">
 													<div class="col-md-12">
-													<h5 class="profile-heading">{{ t('personalinfo') }}</h5>
+													<h5 class="profile-heading"><?php echo  t('personalinfo') ; ?></h5>
 													<div class="panel panel-default">
 														  <!-- Default panel contents -->
 
@@ -485,151 +484,151 @@
 														  <table class="table table-striped table-bordered table-advance table-hover">
 																		<tbody>
 																			<tr>
-																				<td> {{ t('relationshipstatus') }} </td>
+																				<td> <?php echo  t('relationshipstatus') ; ?> </td>
 																				<td>
-																				 @if(Auth::guest() || ($profile->user->id != Auth::user()->id))
-																					@if( $relationshipStatus)
-																						{{ $relationshipStatus }} 
-																					@else
-																						{{ t('single') }}
-																					@endif
-																				@else
-																					{{ Form::select('relationship', Profile::profile_fields("relationshipStatus"), "$profile->relationshipstatus") }}
-																				@endif
+																				 <?php if(Auth::guest() || ($profile->user->id != Auth::user()->id)): ?>
+																					<?php if( $relationshipStatus): ?>
+																						<?php echo  $relationshipStatus ; ?> 
+																					<?php else: ?>
+																						<?php echo  t('single') ; ?>
+																					<?php endif; ?>
+																				<?php else: ?>
+																					<?php echo  Form::select('relationship', Profile::profile_fields("relationshipStatus"), "$profile->relationshipstatus") ; ?>
+																				<?php endif; ?>
 																				</td>
 							   
 																			</tr>
 
 																			<tr>
-																				<td>{{ t('bodytype') }} </td>
+																				<td><?php echo  t('bodytype') ; ?> </td>
 																				<td>
-																				 @if(Auth::guest() || ($profile->user->id != Auth::user()->id))
-																					@if( $bodyType )
-																						{{ $bodyType }} 
-																					@else
+																				 <?php if(Auth::guest() || ($profile->user->id != Auth::user()->id)): ?>
+																					<?php if( $bodyType ): ?>
+																						<?php echo  $bodyType ; ?> 
+																					<?php else: ?>
 																						<center>-</center>
-																					@endif
-																				@else
-																					{{ Form::select('bodyType',  Profile::profile_fields("bodyType"), "$profile->bodytype") }}
-																				@endif
+																					<?php endif; ?>
+																				<?php else: ?>
+																					<?php echo  Form::select('bodyType',  Profile::profile_fields("bodyType"), "$profile->bodytype") ; ?>
+																				<?php endif; ?>
 																				</td>
 																			</tr>
 
 																			<tr>
-																				<td> {{ t('haircolor') }}</td>
+																				<td> <?php echo  t('haircolor') ; ?></td>
 																				<td>
-																				 @if(Auth::guest() || ($profile->user->id != Auth::user()->id))
-																					@if( $hairColor)
-																						{{ $hairColor }} 
-																					@else
+																				 <?php if(Auth::guest() || ($profile->user->id != Auth::user()->id)): ?>
+																					<?php if( $hairColor): ?>
+																						<?php echo  $hairColor ; ?> 
+																					<?php else: ?>
 																						<center>-</center>
-																					@endif
-																				@else
-																					{{ Form::select('hairColor',  Profile::profile_fields("hairColor"), "$profile->haircolor") }}
-																				@endif
+																					<?php endif; ?>
+																				<?php else: ?>
+																					<?php echo  Form::select('hairColor',  Profile::profile_fields("hairColor"), "$profile->haircolor") ; ?>
+																				<?php endif; ?>
 																				</td>
 																			</tr>
 
 																			<tr>
-																				<td> {{ t('eyecolor') }}</td>
+																				<td> <?php echo  t('eyecolor') ; ?></td>
 																				<td>
-																				 @if(Auth::guest() || ($profile->user->id != Auth::user()->id))
-																					@if($eyeColor)
-																						{{ $eyeColor }} 
-																					@else
+																				 <?php if(Auth::guest() || ($profile->user->id != Auth::user()->id)): ?>
+																					<?php if($eyeColor): ?>
+																						<?php echo  $eyeColor ; ?> 
+																					<?php else: ?>
 																						<center>-</center>
-																					@endif
-																				@else
-																					{{ Form::select('eyeColor',  Profile::profile_fields("eyeColor"), "$profile->eyecolor") }}
-																				@endif
+																					<?php endif; ?>
+																				<?php else: ?>
+																					<?php echo  Form::select('eyeColor',  Profile::profile_fields("eyeColor"), "$profile->eyecolor") ; ?>
+																				<?php endif; ?>
 																				</td>				   
 																			</tr>
 										
 																			<tr>
-																				<td>{{ t('living') }}</td>
+																				<td><?php echo  t('living') ; ?></td>
 																				<td>
-																				@if(Auth::guest() || ($profile->user->id != Auth::user()->id))
-																					@if( $living )
-																						{{ $living }} 
-																					@else
+																				<?php if(Auth::guest() || ($profile->user->id != Auth::user()->id)): ?>
+																					<?php if( $living ): ?>
+																						<?php echo  $living ; ?> 
+																					<?php else: ?>
 																						<center>-</center>
-																					@endif
-																				@else	
-																					{{ Form::select('living', Profile::profile_fields("living"), "$profile->living") }}
-																				@endif
+																					<?php endif; ?>
+																				<?php else: ?>	
+																					<?php echo  Form::select('living', Profile::profile_fields("living"), "$profile->living") ; ?>
+																				<?php endif; ?>
 																				</td>						   
 																			</tr>   
 										
 																			<tr>
-																				<td>{{ t('children') }}</td>
+																				<td><?php echo  t('children') ; ?></td>
 																				<td>
-																				@if(Auth::guest() || ($profile->user->id != Auth::user()->id))
-																					@if($children)
-																						{{ $children }}
-																					@else
+																				<?php if(Auth::guest() || ($profile->user->id != Auth::user()->id)): ?>
+																					<?php if($children): ?>
+																						<?php echo  $children ; ?>
+																					<?php else: ?>
 																						 <center>-</center>
-																					@endif
-																				@else
-																					{{ Form::select('children',  Profile::profile_fields("children"), "$profile->children") }}
-																				@endif
+																					<?php endif; ?>
+																				<?php else: ?>
+																					<?php echo  Form::select('children',  Profile::profile_fields("children"), "$profile->children") ; ?>
+																				<?php endif; ?>
 																				</td>
 																			</tr>
 
 
 
 																			<tr>
-																				<td>{{ t('smoking') }}</td>
+																				<td><?php echo  t('smoking') ; ?></td>
 																				<td>
-																				@if(Auth::guest() || ($profile->user->id != Auth::user()->id))
-																					@if($smoking)
-																						{{ $smoking }} 
-																					@else
+																				<?php if(Auth::guest() || ($profile->user->id != Auth::user()->id)): ?>
+																					<?php if($smoking): ?>
+																						<?php echo  $smoking ; ?> 
+																					<?php else: ?>
 																						<center>-</center>
-																					@endif
-																				@else
-																					{{ Form::select('smoking',  Profile::profile_fields("smoking"), "$profile->smoking") }}
-																				@endif
+																					<?php endif; ?>
+																				<?php else: ?>
+																					<?php echo  Form::select('smoking',  Profile::profile_fields("smoking"), "$profile->smoking") ; ?>
+																				<?php endif; ?>
 																				</td>
 																   
 																			</tr>
 
 																		   <tr>
-																				<td>{{ t('drinking') }}</td>
+																				<td><?php echo  t('drinking') ; ?></td>
 																				<td>
-																				@if(Auth::guest() || ($profile->user->id != Auth::user()->id))
-																					@if($drinking)
-																						{{ $drinking }} 
-																					@else
+																				<?php if(Auth::guest() || ($profile->user->id != Auth::user()->id)): ?>
+																					<?php if($drinking): ?>
+																						<?php echo  $drinking ; ?> 
+																					<?php else: ?>
 																						<center>-</center>
-																					@endif
-																				@else
-																					{{ Form::select('drinking', Profile::profile_fields("drinking"), "$profile->drinking") }}
-																				@endif
+																					<?php endif; ?>
+																				<?php else: ?>
+																					<?php echo  Form::select('drinking', Profile::profile_fields("drinking"), "$profile->drinking") ; ?>
+																				<?php endif; ?>
 																				</td>
 																			</tr>
 
 																			<tr>
-																				<td>{{ t('education') }}</td>
+																				<td><?php echo  t('education') ; ?></td>
 																				<td>
-																				@if(Auth::guest() || ($profile->user->id != Auth::user()->id))
-																					@if($education)
-																						{{ $education }} 
-																					@else
+																				<?php if(Auth::guest() || ($profile->user->id != Auth::user()->id)): ?>
+																					<?php if($education): ?>
+																						<?php echo  $education ; ?> 
+																					<?php else: ?>
 																						<center>-</center>
-																					@endif
-																				@else
-																					{{ Form::select('education',  Profile::profile_fields("education"), "$profile->education") }}
-																				@endif
+																					<?php endif; ?>
+																				<?php else: ?>
+																					<?php echo  Form::select('education',  Profile::profile_fields("education"), "$profile->education") ; ?>
+																				<?php endif; ?>
 																				</td>
 																   		
 																			</tr>
 																		</tbody>
 																	</table>
-																	@if(!Auth::guest())
-																@if($profile->user->id == Auth::user()->id)
-																	{{ Form::close() }}
-																@endif
-																@endif
+																	<?php if(!Auth::guest()): ?>
+																<?php if($profile->user->id == Auth::user()->id): ?>
+																	<?php echo  Form::close() ; ?>
+																<?php endif; ?>
+																<?php endif; ?>
 														</div>
 													</div>
 													</div>
@@ -652,13 +651,13 @@
 						
 						
 
-@endsection
+<?php \Laravel\Section::stop(); ?>
 
 
-@section('scripts')
+<?php \Laravel\Section::start('scripts'); ?>
 
-<script src="{{ asset('assets/js/image-picker.min.js') }}"></script>
-<script src="{{ asset('assets/js/masonry.js') }}"></script>
+<script src="<?php echo  asset('assets/js/image-picker.min.js') ; ?>"></script>
+<script src="<?php echo  asset('assets/js/masonry.js') ; ?>"></script>
 
 <script>
 
@@ -679,9 +678,9 @@ function masonryImageSelect(){
 
 }
 
-@if(!Auth::guest())
+<?php if(!Auth::guest()): ?>
 
- @if($profile->user->id == Auth::user()->id)
+ <?php if($profile->user->id == Auth::user()->id): ?>
  
   	var map;
     var geocoder;
@@ -695,8 +694,8 @@ function masonryImageSelect(){
          map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
 
-         var pos = new google.maps.LatLng({{ Auth::user()->lat }},
-                                       {{ Auth::user()->lng }});
+         var pos = new google.maps.LatLng(<?php echo  Auth::user()->lat ; ?>,
+                                       <?php echo  Auth::user()->lng ; ?>);
 
          map.setCenter(pos);
 
@@ -709,7 +708,7 @@ function masonryImageSelect(){
 	});
 
 	 var infowindow = new google.maps.InfoWindow({
-      content: "<b>{{ t('youarehere') }}</b><p style='font-size:8pt;'>{{ t('dragmappin') }}</p>"
+      content: "<b><?php echo  t('youarehere') ; ?></b><p style='font-size:8pt;'><?php echo  t('dragmappin') ; ?></p>"
   });
 
 	 infowindow.open(map,marker);
@@ -900,9 +899,9 @@ function masonryImageSelect(){
 
 
  
- @endif
+ <?php endif; ?>
 
- @endif
+ <?php endif; ?>
 
 
 </script>
@@ -940,7 +939,7 @@ $("form").submit(function(){
 			if($("#user-photo-select").val())
 			{
 			
-				$.post('{{ url("/user/set_profile_picture") }}', { photo_id : $("#user-photo-select").val() }, function(data){
+				$.post('<?php echo  url("/user/set_profile_picture") ; ?>', { photo_id : $("#user-photo-select").val() }, function(data){
 				
 				
 					window.location.reload();
@@ -981,7 +980,7 @@ $("form").submit(function(){
 
         
         $.ajax({
-            url: '{{ url("/upload_photo/profile_picture") }}',
+            url: '<?php echo  url("/upload_photo/profile_picture") ; ?>',
             type: 'POST',
 			async: true,
             data: data,
@@ -1121,7 +1120,7 @@ $("form").submit(function(){
 		
 				jQuery("#city").addClass("spinner");
 			 	jQuery.getJSON(
-					"{{ url('/interests/') }}"+request.term,
+					"<?php echo  url('/interests/') ; ?>"+request.term,
 					
 					function (data) {
 						jQuery("#interests").removeClass("spinner");
@@ -1166,7 +1165,7 @@ $("form").submit(function(){
 	 		if($("#interests").val() == ''){
 	 		
 	 		
-	 			alert("{{ t('interestsempty') }}");
+	 			alert("<?php echo  t('interestsempty') ; ?>");
 	 		
 	 		
 	 		}
@@ -1182,7 +1181,7 @@ $("form").submit(function(){
 	 			
 	 			}
 				else{
-	 			$.post("{{ url('/add_interest') }}", { interest: $("#interests").val() }, function(){
+	 			$.post("<?php echo  url('/add_interest') ; ?>", { interest: $("#interests").val() }, function(){
 	 			
 	 			
 	 						window.location.reload();
@@ -1202,7 +1201,7 @@ $("form").submit(function(){
 	 	
 	 	$(this).prepend('<i class="fa fa-spinner fa-spin"></i> ');
 	 	
-	 	$.post("{{ url('/add_new_interest') }}", { category : $("#interests_category").val(), interest: $("#interests").val() }, function(data){
+	 	$.post("<?php echo  url('/add_new_interest') ; ?>", { category : $("#interests_category").val(), interest: $("#interests").val() }, function(data){
 	 				
 	 				$("#add-new-interest").find(':first-child').remove();
 	 			
@@ -1220,7 +1219,7 @@ $("form").submit(function(){
 	 	
 	 	$interest_id = $(this).data('interest-id');
 	 	
-	 	$.post("{{ url('/delete_interest') }}", { interest_id : $interest_id }, function(){
+	 	$.post("<?php echo  url('/delete_interest') ; ?>", { interest_id : $interest_id }, function(){
 	 	
 	 		window.location.reload();
 	 	
@@ -1260,7 +1259,7 @@ $("#gift-select").imagepicker({ show_label : true });
 
 $(".gifts-popover").popover();
 
-@if($profile->user->id == Auth::user()->id)
+<?php if($profile->user->id == Auth::user()->id): ?>
 
 $(".user_gift").click(function(){
 
@@ -1272,7 +1271,7 @@ $(".user_gift").click(function(){
 
 $("#remove-gift-btn").click(function(){
 
-	$.post("{{ url('/remove_gift') }}" , { gift_id : $(this).data('gift-id') },function(data){
+	$.post("<?php echo  url('/remove_gift') ; ?>" , { gift_id : $(this).data('gift-id') },function(data){
 			
 				data = JSON.parse(data);
 				
@@ -1301,7 +1300,7 @@ $("#remove-gift-btn").click(function(){
 
 });
 
-@endif
+<?php endif; ?>
 
 
 
@@ -1315,7 +1314,7 @@ $("#gift-submit-btn").click(function(){
 			
 	
 
-			$.post("{{ url('/send_gift') }}" , { gift_id : $("#gift-select").val(), to_user: '{{ $profile->user->id }}' } ,function(data){
+			$.post("<?php echo  url('/send_gift') ; ?>" , { gift_id : $("#gift-select").val(), to_user: '<?php echo  $profile->user->id ; ?>' } ,function(data){
 			
 				data = JSON.parse(data);
 				
@@ -1353,4 +1352,5 @@ $("#gift-submit-btn").click(function(){
 
 </script>
 
-@endsection
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('twocolumn')->with(get_defined_vars())->render(); ?>
