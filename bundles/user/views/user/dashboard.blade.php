@@ -89,7 +89,7 @@ text-align: center;
 								    		@else
 								    		<strong class="text-primary">{{ t('chat') }}</strong>
 								    		@endif
-								    		 with 
+								    		 {{ t('with') }} 
 								    		 @if($profile->preferred_gender == 1)
 								    		<strong class="text-success">{{ t('guys') }}</strong>
 								    		@elseif($profile->preferred_gender == 2)
