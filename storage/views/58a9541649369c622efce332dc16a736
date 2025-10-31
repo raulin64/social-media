@@ -1,0 +1,125 @@
+
+<?php \Laravel\Section::start('content'); ?>
+				
+	<div class="row-fluid" style="margin-top:60px;">
+		<div class="span12">
+			<!-- BEGIN PORTLET-->   
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption"><i class="icon-reorder"></i><?php echo  t('addgifts') ; ?></div>
+				</div>
+			<div class="portlet-body form">
+				<?php if(Session::has('gift_added')): ?>
+			
+					<div class="alert alert-success">
+						<?php echo  t('giftaddsuccess') ; ?>
+					</div>
+				<?php endif; ?>				
+				<!-- BEGIN FORM-->
+				<?php echo  Form::open_for_files('/czar/add_gift', 'POST', array('class'=>'form-signin form-horizontal', 'id'=>'form-add' )) ; ?>
+	      	
+					<div class="control-group" id="control-name">
+						<label class="control-label" for="inputCredits"><?php echo  t('name') ; ?></label>
+						<div class="controls">
+						      <input type="text" name="name"    value="" id="name">
+						</div>
+					</div>
+						        
+					<div class="control-group" id="control-photo">
+						<label class="control-label" for="inputCost"><?php echo  t('iconimage') ; ?></label>
+						<div class="controls">
+							<?php echo  Form::file('photo', array("title"=>t("choosefile"), "id"=>"photo")) ; ?>
+								<p class="muted">
+									<?php echo  t('picuploadmessage') ; ?>
+								</p>
+						 </div>
+					</div>
+					
+					<div class="control-group" >
+						<label class="control-label" for="inputCredits"><?php echo  t('price') ; ?></label>
+						<div class="controls">
+						      <input type="number" name="price"    value="0">
+						</div>
+					</div>
+					
+					<div class="form-actions">
+						<button class="btn green "  type="submit" id="add-btn"><?php echo  t('add') ; ?></button>
+					</div>
+				<?php echo  Form::close() ; ?>
+			</div>
+		</div>
+		<!-- END PORTLET-->
+
+		<!-- BEGIN PORTLET-->   
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption"><i class="icon-reorder"></i><?php echo  t('currentgifts') ; ?></div>
+			</div>
+			
+			<div class="portlet-body form">
+				<?php if(Session::has('gift_deleted')): ?>
+			
+					<div class="alert alert-success">
+						<?php echo  t('giftdeletesuccess') ; ?>
+					</div>
+				<?php endif; ?>	
+				<table class="table table-bordered">
+					<thead>
+					 	<td class="span2"><?php echo  t('name') ; ?></td>
+					 	<td class="span2"><?php echo  t('price') ; ?></td>
+					 	<td class="span3"><?php echo  t('iconimage') ; ?></td>
+					 </thead>
+			  		<tbody>
+						<?php foreach($gifts as $gift): ?>
+						  	<tr>
+							 	<td class="span2"><?php echo  $gift->name; ?></td>
+							 	<td class="span2"><?php echo $gift->price; ?></td>
+							 	<td ><img class="img" src="<?php echo $gift->iconURL(); ?>"/>
+							 		<form action="<?php echo  url('czar/delete_gift') ; ?>" method="POST">
+										<input type="hidden" name="id" value="<?php echo  $gift->id ; ?>" />
+										<button type="submit" class="btn red mini"><?php echo  t('delete') ; ?></button>
+									</form>
+							 	</td>
+							 </tr>
+					 	<?php endforeach; ?>
+			 		</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start("scripts"); ?>
+
+<script type="text/javascript">
+
+$(function  () {	
+	$("#add-btn").click(function(e){
+	
+		e.preventDefault();
+		$("#add-btn").prepend('<i class="fa fa-spinner fa-spin"></i> ');
+		$("#add-btn").attr("disabled", true);
+		$("#control-name").removeClass("has-error");
+		$("#control-photo").removeClass("has-error");
+	 	$(".help-inline").remove();
+		if($("#name").val() == null || $("#name").val() == ''){
+		console.log("adsjc");
+	 		$("#control-name").addClass("has-error");
+	 		$("#name").parent().append('<label for="fullname" class="help-inline help-small no-left-padding text-error"><?php echo  t("namecannotbeempty") ; ?></label>');
+	 	} else if($("#photo").val() == ''){
+	 		console.log("sdh");
+	 		$("#control-photo").addClass("has-error");
+	 		$("#photo").parent().append('<label for="fullname" class="help-inline help-small no-left-padding text-error"><?php echo  t("pleaseuploadimage") ; ?></label>');
+	 	} else {
+	 		$("#form-add").submit();
+	 	}
+		$("#add-btn").removeAttr("disabled");
+		$("#add-btn").find(':first-child').remove();
+	});
+});
+
+</script>
+
+<?php \Laravel\Section::stop(); ?>
+
+<?php echo view('czar::pageshell')->with(get_defined_vars())->render(); ?>

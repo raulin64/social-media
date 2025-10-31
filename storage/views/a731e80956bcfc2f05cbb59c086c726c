@@ -326,12 +326,12 @@
 															 	
 															 	</div>
 															 <?php else: ?>
-															 <img class="img-responsive" id="current_user_map" src="http://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C<?php echo $profile->user->lat; ?>,<?php echo $profile->user->lng; ?>&sensor=false" />
+															 <img class="img-responsive" id="current_user_map" src="https://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C<?php echo $profile->user->lat; ?>,<?php echo $profile->user->lng; ?>&sensor=false&key=AIzaSyDxi3_nWFSa7bgFUC_53M23G37MIodM1NA" />
 															 <?php endif; ?>
 
 															 <?php else: ?>
 
-															  <img class="img-responsive" id="current_user_map" src="http://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C<?php echo $profile->user->lat; ?>,<?php echo $profile->user->lng; ?>&sensor=false" />
+															  <img class="img-responsive" id="current_user_map" src="https://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C<?php echo $profile->user->lat; ?>,<?php echo $profile->user->lng; ?>&sensor=false&key=AIzaSyDxi3_nWFSa7bgFUC_53M23G37MIodM1NA" />
 
 
 															 <?php endif; ?>
@@ -1304,48 +1304,7 @@ $("#remove-gift-btn").click(function(){
 
 
 
-$("#gift-submit-btn").click(function(){
 
-			$(".gift-error").hide();
-
-			if($("#gift-select").val())
-			{
-			
-			
-	
-
-			$.post("<?php echo  url('/send_gift') ; ?>" , { gift_id : $("#gift-select").val(), to_user: '<?php echo  $profile->user->id ; ?>' } ,function(data){
-			
-				data = JSON.parse(data);
-				
-				if(data.success)
-				{
-				
-					$("#giveGiftModal").modal('hide');
-					location.reload();
-				
-				}
-				
-				if(data.error){
-				
-				
-					$("#giftbalance-error").show();
-					
-				
-				}
-				
-			
-			});
-			
-			}
-			else{
-			
-			$("#selectgift-error").show();
-			
-			}
-
-
-});
 
 
 });

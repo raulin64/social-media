@@ -327,12 +327,12 @@
 															 	
 															 	</div>
 															 @else
-															 <img class="img-responsive" id="current_user_map" src="http://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C{{$profile->user->lat}},{{$profile->user->lng}}&sensor=false" />
+															 <img class="img-responsive" id="current_user_map" src="https://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C{{$profile->user->lat}},{{$profile->user->lng}}&sensor=false&key=AIzaSyDxi3_nWFSa7bgFUC_53M23G37MIodM1NA" />
 															 @endif
 
 															 @else
 
-															  <img class="img-responsive" id="current_user_map" src="http://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C{{$profile->user->lat}},{{$profile->user->lng}}&sensor=false" />
+															  <img class="img-responsive" id="current_user_map" src="https://maps.googleapis.com/maps/api/staticmap?size=500x300&zoom=11&markers=size:mid%7Ccolor:red%7C{{$profile->user->lat}},{{$profile->user->lng}}&sensor=false&key=AIzaSyDxi3_nWFSa7bgFUC_53M23G37MIodM1NA" />
 
 
 															 @endif
@@ -1305,48 +1305,7 @@ $("#remove-gift-btn").click(function(){
 
 
 
-$("#gift-submit-btn").click(function(){
 
-			$(".gift-error").hide();
-
-			if($("#gift-select").val())
-			{
-			
-			
-	
-
-			$.post("{{ url('/send_gift') }}" , { gift_id : $("#gift-select").val(), to_user: '{{ $profile->user->id }}' } ,function(data){
-			
-				data = JSON.parse(data);
-				
-				if(data.success)
-				{
-				
-					$("#giveGiftModal").modal('hide');
-					location.reload();
-				
-				}
-				
-				if(data.error){
-				
-				
-					$("#giftbalance-error").show();
-					
-				
-				}
-				
-			
-			});
-			
-			}
-			else{
-			
-			$("#selectgift-error").show();
-			
-			}
-
-
-});
 
 
 });

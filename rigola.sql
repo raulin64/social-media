@@ -86,9 +86,13 @@ CREATE TABLE IF NOT EXISTS `chats` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.chats: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.chats: ~3 rows (aproximadamente)
+INSERT INTO `chats` (`id`, `from_user`, `to_user`, `contact_id`, `notify_status`, `message`, `created_at`, `updated_at`) VALUES
+	(1, 1001, 1003, 7, 0, '❤️❤️❤️❤️ te quiero ', '2025-10-26 17:20:07', '2025-10-26 17:20:07'),
+	(2, 1001, 1003, 7, 0, '😘', '2025-10-26 17:28:46', '2025-10-26 17:28:46'),
+	(3, 1001, 1002, 8, 1, '😍', '2025-10-30 13:03:40', '2025-10-30 15:15:20');
 
 -- Volcando estructura para tabla rigola.contacts
 CREATE TABLE IF NOT EXISTS `contacts` (
@@ -98,16 +102,18 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.contacts: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.contacts: ~8 rows (aproximadamente)
 INSERT INTO `contacts` (`id`, `user_id`, `contact`, `created_at`, `updated_at`) VALUES
 	(1, 21148, 21147, '2025-10-09 14:46:09', '2025-10-09 14:46:09'),
 	(2, 21149, 21148, '2025-10-10 16:10:52', '2025-10-10 16:10:52'),
 	(3, 21149, 21147, '2025-10-10 16:16:47', '2025-10-10 16:16:47'),
 	(4, 21153, 21152, '2025-10-10 19:51:00', '2025-10-10 19:51:00'),
 	(5, 21154, 21152, '2025-10-12 13:23:13', '2025-10-12 13:23:13'),
-	(6, 21154, 21153, '2025-10-12 13:25:08', '2025-10-12 13:25:08');
+	(6, 21154, 21153, '2025-10-12 13:25:08', '2025-10-12 13:25:08'),
+	(7, 1001, 1003, '2025-10-26 17:18:16', '2025-10-26 17:18:16'),
+	(8, 1001, 1002, '2025-10-26 17:22:27', '2025-10-26 17:22:27');
 
 -- Volcando estructura para tabla rigola.credithistory
 CREATE TABLE IF NOT EXISTS `credithistory` (
@@ -120,9 +126,9 @@ CREATE TABLE IF NOT EXISTS `credithistory` (
   `updated_at` datetime NOT NULL,
   `transaction_id` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=474 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=637 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla rigola.credithistory: ~448 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.credithistory: ~636 rows (aproximadamente)
 INSERT INTO `credithistory` (`id`, `user_id`, `balance`, `amount`, `type`, `created_at`, `updated_at`, `transaction_id`) VALUES
 	(1, 21147, 11, 5, 'app.userlogin', '2025-10-09 13:51:39', '2025-10-09 13:51:39', 'N/A'),
 	(2, 21147, 16, 5, 'app.userlogin', '2025-10-09 14:26:35', '2025-10-09 14:26:35', 'N/A'),
@@ -596,7 +602,178 @@ INSERT INTO `credithistory` (`id`, `user_id`, `balance`, `amount`, `type`, `crea
 	(470, 1003, 86, 5, 'app.userlogin', '2025-10-22 17:47:44', '2025-10-22 17:47:44', 'N/A'),
 	(471, 1003, 91, 5, 'app.userlogin', '2025-10-22 17:48:28', '2025-10-22 17:48:28', 'N/A'),
 	(472, 1003, 96, 5, 'app.userlogin', '2025-10-22 17:52:26', '2025-10-22 17:52:26', 'N/A'),
-	(473, 1003, 101, 5, 'app.userlogin', '2025-10-22 17:53:02', '2025-10-22 17:53:02', 'N/A');
+	(473, 1003, 101, 5, 'app.userlogin', '2025-10-22 17:53:02', '2025-10-22 17:53:02', 'N/A'),
+	(474, 1003, 106, 5, 'app.userlogin', '2025-10-23 09:29:06', '2025-10-23 09:29:06', 'N/A'),
+	(475, 1003, 111, 5, 'app.userlogin', '2025-10-23 09:47:00', '2025-10-23 09:47:00', 'N/A'),
+	(476, 1003, 116, 5, 'app.userlogin', '2025-10-23 09:47:11', '2025-10-23 09:47:11', 'N/A'),
+	(477, 1003, 121, 5, 'app.userlogin', '2025-10-23 10:20:16', '2025-10-23 10:20:16', 'N/A'),
+	(478, 1003, 126, 5, 'app.userlogin', '2025-10-23 10:27:42', '2025-10-23 10:27:42', 'N/A'),
+	(479, 1003, 131, 5, 'app.userlogin', '2025-10-24 13:49:26', '2025-10-24 13:49:26', 'N/A'),
+	(480, 1003, 136, 5, 'app.userlogin', '2025-10-25 11:06:42', '2025-10-25 11:06:42', 'N/A'),
+	(481, 1003, 141, 5, 'app.userlogin', '2025-10-25 11:19:44', '2025-10-25 11:19:44', 'N/A'),
+	(482, 1003, 146, 5, 'app.userlogin', '2025-10-26 13:44:06', '2025-10-26 13:44:06', 'N/A'),
+	(483, 1003, 166, 20, 'app.uservisitingprofile', '2025-10-26 13:44:20', '2025-10-26 13:44:20', 'N/A'),
+	(484, 1001, 56, 10, 'app.userprofileVisited', '2025-10-26 13:44:20', '2025-10-26 13:44:20', 'N/A'),
+	(485, 1003, 186, 20, 'app.uservisitingprofile', '2025-10-26 13:44:28', '2025-10-26 13:44:28', 'N/A'),
+	(486, 1002, 51, 10, 'app.userprofileVisited', '2025-10-26 13:44:28', '2025-10-26 13:44:28', 'N/A'),
+	(487, 1003, 191, 5, 'app.userlogin', '2025-10-26 14:08:17', '2025-10-26 14:08:17', 'N/A'),
+	(488, 1003, 211, 20, 'app.uservisitingprofile', '2025-10-26 14:08:30', '2025-10-26 14:08:30', 'N/A'),
+	(489, 1001, 66, 10, 'app.userprofileVisited', '2025-10-26 14:08:30', '2025-10-26 14:08:30', 'N/A'),
+	(490, 1003, 216, 5, 'app.userlogin', '2025-10-26 15:14:58', '2025-10-26 15:14:58', 'N/A'),
+	(491, 1001, 71, 5, 'app.userlogin', '2025-10-26 17:17:50', '2025-10-26 17:17:50', 'N/A'),
+	(492, 1001, 91, 20, 'app.uservisitingprofile', '2025-10-26 17:17:55', '2025-10-26 17:17:55', 'N/A'),
+	(493, 1003, 226, 10, 'app.userprofileVisited', '2025-10-26 17:17:55', '2025-10-26 17:17:55', 'N/A'),
+	(494, 1001, 101, 10, 'app.usercontactadded', '2025-10-26 17:18:17', '2025-10-26 17:18:17', 'N/A'),
+	(495, 1001, 106, 5, 'app.userlogin', '2025-10-26 17:19:26', '2025-10-26 17:19:26', 'N/A'),
+	(496, 1001, 126, 20, 'app.uservisitingprofile', '2025-10-26 17:19:35', '2025-10-26 17:19:35', 'N/A'),
+	(497, 1003, 236, 10, 'app.userprofileVisited', '2025-10-26 17:19:35', '2025-10-26 17:19:35', 'N/A'),
+	(498, 1001, 136, 10, 'app.usercontactadded', '2025-10-26 17:22:27', '2025-10-26 17:22:27', 'N/A'),
+	(499, 1001, 141, 5, 'app.userlogin', '2025-10-26 17:28:32', '2025-10-26 17:28:32', 'N/A'),
+	(500, 1001, 146, 5, 'app.userlogin', '2025-10-28 07:56:17', '2025-10-28 07:56:17', 'N/A'),
+	(501, 1002, 56, 5, 'app.userlogin', '2025-10-28 08:29:41', '2025-10-28 08:29:41', 'N/A'),
+	(502, 1002, 76, 20, 'app.uservisitingprofile', '2025-10-28 08:29:53', '2025-10-28 08:29:53', 'N/A'),
+	(503, 1001, 156, 10, 'app.userprofileVisited', '2025-10-28 08:29:53', '2025-10-28 08:29:53', 'N/A'),
+	(504, 1002, 81, 5, 'app.userlogin', '2025-10-28 14:53:42', '2025-10-28 14:53:42', 'N/A'),
+	(505, 1002, 101, 20, 'app.uservisitingprofile', '2025-10-28 15:01:25', '2025-10-28 15:01:25', 'N/A'),
+	(506, 1001, 166, 10, 'app.userprofileVisited', '2025-10-28 15:01:25', '2025-10-28 15:01:25', 'N/A'),
+	(507, 1002, 106, 5, 'app.userlogin', '2025-10-28 15:16:49', '2025-10-28 15:16:49', 'N/A'),
+	(508, 1002, 126, 20, 'app.uservisitingprofile', '2025-10-28 15:16:54', '2025-10-28 15:16:54', 'N/A'),
+	(509, 1001, 176, 10, 'app.userprofileVisited', '2025-10-28 15:16:54', '2025-10-28 15:16:54', 'N/A'),
+	(510, 1002, 146, 20, 'app.uservisitingprofile', '2025-10-28 15:17:02', '2025-10-28 15:17:02', 'N/A'),
+	(511, 1001, 186, 10, 'app.userprofileVisited', '2025-10-28 15:17:02', '2025-10-28 15:17:02', 'N/A'),
+	(512, 1002, 151, 5, 'app.userlogin', '2025-10-28 15:20:12', '2025-10-28 15:20:12', 'N/A'),
+	(513, 1002, 171, 20, 'app.uservisitingprofile', '2025-10-28 15:20:17', '2025-10-28 15:20:17', 'N/A'),
+	(514, 1001, 196, 10, 'app.userprofileVisited', '2025-10-28 15:20:17', '2025-10-28 15:20:17', 'N/A'),
+	(515, 1002, 191, 20, 'app.uservisitingprofile', '2025-10-28 15:42:21', '2025-10-28 15:42:21', 'N/A'),
+	(516, 1001, 206, 10, 'app.userprofileVisited', '2025-10-28 15:42:21', '2025-10-28 15:42:21', 'N/A'),
+	(517, 1002, 196, 5, 'app.userlogin', '2025-10-28 15:44:36', '2025-10-28 15:44:36', 'N/A'),
+	(518, 1002, 216, 20, 'app.uservisitingprofile', '2025-10-28 15:44:40', '2025-10-28 15:44:40', 'N/A'),
+	(519, 1001, 216, 10, 'app.userprofileVisited', '2025-10-28 15:44:40', '2025-10-28 15:44:40', 'N/A'),
+	(520, 1002, 221, 5, 'app.userlogin', '2025-10-28 15:47:09', '2025-10-28 15:47:09', 'N/A'),
+	(521, 1002, 241, 20, 'app.uservisitingprofile', '2025-10-28 15:51:07', '2025-10-28 15:51:07', 'N/A'),
+	(522, 1001, 226, 10, 'app.userprofileVisited', '2025-10-28 15:51:07', '2025-10-28 15:51:07', 'N/A'),
+	(523, 1002, 246, 5, 'app.userlogin', '2025-10-28 15:52:17', '2025-10-28 15:52:17', 'N/A'),
+	(524, 1002, 266, 20, 'app.uservisitingprofile', '2025-10-28 15:52:21', '2025-10-28 15:52:21', 'N/A'),
+	(525, 1001, 236, 10, 'app.userprofileVisited', '2025-10-28 15:52:21', '2025-10-28 15:52:21', 'N/A'),
+	(526, 1002, 271, 5, 'app.userlogin', '2025-10-28 15:54:39', '2025-10-28 15:54:39', 'N/A'),
+	(527, 1002, 276, 5, 'app.userlogin', '2025-10-28 15:55:06', '2025-10-28 15:55:06', 'N/A'),
+	(528, 1002, 281, 5, 'app.userlogin', '2025-10-28 17:28:50', '2025-10-28 17:28:50', 'N/A'),
+	(529, 1002, 301, 20, 'app.uservisitingprofile', '2025-10-28 17:29:53', '2025-10-28 17:29:53', 'N/A'),
+	(530, 1003, 246, 10, 'app.userprofileVisited', '2025-10-28 17:29:53', '2025-10-28 17:29:53', 'N/A'),
+	(531, 1002, 321, 20, 'app.uservisitingprofile', '2025-10-28 17:31:37', '2025-10-28 17:31:37', 'N/A'),
+	(532, 1001, 246, 10, 'app.userprofileVisited', '2025-10-28 17:31:37', '2025-10-28 17:31:37', 'N/A'),
+	(533, 1002, 326, 5, 'app.userlogin', '2025-10-28 17:34:50', '2025-10-28 17:34:50', 'N/A'),
+	(534, 1002, 346, 20, 'app.uservisitingprofile', '2025-10-28 17:35:07', '2025-10-28 17:35:07', 'N/A'),
+	(535, 1001, 256, 10, 'app.userprofileVisited', '2025-10-28 17:35:07', '2025-10-28 17:35:07', 'N/A'),
+	(536, 1002, 351, 5, 'app.userlogin', '2025-10-28 17:36:31', '2025-10-28 17:36:31', 'N/A'),
+	(537, 1002, 371, 20, 'app.uservisitingprofile', '2025-10-28 17:36:43', '2025-10-28 17:36:43', 'N/A'),
+	(538, 1001, 266, 10, 'app.userprofileVisited', '2025-10-28 17:36:43', '2025-10-28 17:36:43', 'N/A'),
+	(539, 1002, 376, 5, 'app.userlogin', '2025-10-28 17:38:25', '2025-10-28 17:38:25', 'N/A'),
+	(540, 1002, 396, 20, 'app.uservisitingprofile', '2025-10-28 17:38:31', '2025-10-28 17:38:31', 'N/A'),
+	(541, 1001, 276, 10, 'app.userprofileVisited', '2025-10-28 17:38:31', '2025-10-28 17:38:31', 'N/A'),
+	(542, 1002, 401, 5, 'app.userlogin', '2025-10-28 17:41:06', '2025-10-28 17:41:06', 'N/A'),
+	(543, 1002, 421, 20, 'app.uservisitingprofile', '2025-10-28 17:41:16', '2025-10-28 17:41:16', 'N/A'),
+	(544, 1001, 286, 10, 'app.userprofileVisited', '2025-10-28 17:41:16', '2025-10-28 17:41:16', 'N/A'),
+	(545, 1002, 426, 5, 'app.userlogin', '2025-10-28 17:42:51', '2025-10-28 17:42:51', 'N/A'),
+	(546, 1002, 446, 20, 'app.uservisitingprofile', '2025-10-28 17:42:55', '2025-10-28 17:42:55', 'N/A'),
+	(547, 1001, 296, 10, 'app.userprofileVisited', '2025-10-28 17:42:55', '2025-10-28 17:42:55', 'N/A'),
+	(548, 1002, 451, 5, 'app.userlogin', '2025-10-28 17:45:01', '2025-10-28 17:45:01', 'N/A'),
+	(549, 1002, 471, 20, 'app.uservisitingprofile', '2025-10-28 17:45:05', '2025-10-28 17:45:05', 'N/A'),
+	(550, 1001, 306, 10, 'app.userprofileVisited', '2025-10-28 17:45:05', '2025-10-28 17:45:05', 'N/A'),
+	(551, 1002, 476, 5, 'app.userlogin', '2025-10-28 17:46:40', '2025-10-28 17:46:40', 'N/A'),
+	(552, 1002, 496, 20, 'app.uservisitingprofile', '2025-10-28 17:46:44', '2025-10-28 17:46:44', 'N/A'),
+	(553, 1001, 316, 10, 'app.userprofileVisited', '2025-10-28 17:46:44', '2025-10-28 17:46:44', 'N/A'),
+	(554, 1002, 501, 5, 'app.userlogin', '2025-10-29 13:23:00', '2025-10-29 13:23:00', 'N/A'),
+	(555, 1002, 521, 20, 'app.uservisitingprofile', '2025-10-29 13:23:05', '2025-10-29 13:23:05', 'N/A'),
+	(556, 1001, 326, 10, 'app.userprofileVisited', '2025-10-29 13:23:05', '2025-10-29 13:23:05', 'N/A'),
+	(557, 1002, 541, 20, 'app.uservisitingprofile', '2025-10-29 13:29:01', '2025-10-29 13:29:01', 'N/A'),
+	(558, 1001, 336, 10, 'app.userprofileVisited', '2025-10-29 13:29:01', '2025-10-29 13:29:01', 'N/A'),
+	(559, 1002, 561, 20, 'app.uservisitingprofile', '2025-10-29 13:31:59', '2025-10-29 13:31:59', 'N/A'),
+	(560, 1001, 346, 10, 'app.userprofileVisited', '2025-10-29 13:31:59', '2025-10-29 13:31:59', 'N/A'),
+	(561, 1002, 581, 20, 'app.uservisitingprofile', '2025-10-29 13:34:25', '2025-10-29 13:34:25', 'N/A'),
+	(562, 1001, 356, 10, 'app.userprofileVisited', '2025-10-29 13:34:25', '2025-10-29 13:34:25', 'N/A'),
+	(563, 1002, 586, 5, 'app.userlogin', '2025-10-29 13:36:57', '2025-10-29 13:36:57', 'N/A'),
+	(564, 1002, 606, 20, 'app.uservisitingprofile', '2025-10-29 13:37:05', '2025-10-29 13:37:05', 'N/A'),
+	(565, 1001, 366, 10, 'app.userprofileVisited', '2025-10-29 13:37:05', '2025-10-29 13:37:05', 'N/A'),
+	(566, 1002, 611, 5, 'app.userlogin', '2025-10-30 11:51:15', '2025-10-30 11:51:15', 'N/A'),
+	(567, 1002, 616, 5, 'app.userlogin', '2025-10-30 11:52:17', '2025-10-30 11:52:17', 'N/A'),
+	(568, 1002, 621, 5, 'app.userlogin', '2025-10-30 11:52:45', '2025-10-30 11:52:45', 'N/A'),
+	(569, 1002, 626, 5, 'app.userlogin', '2025-10-30 11:53:20', '2025-10-30 11:53:20', 'N/A'),
+	(570, 1002, 631, 5, 'app.userlogin', '2025-10-30 11:54:05', '2025-10-30 11:54:05', 'N/A'),
+	(571, 1002, 636, 5, 'app.userlogin', '2025-10-30 12:00:00', '2025-10-30 12:00:00', 'N/A'),
+	(572, 1002, 641, 5, 'app.userlogin', '2025-10-30 12:01:09', '2025-10-30 12:01:09', 'N/A'),
+	(573, 1002, 661, 20, 'app.uservisitingprofile', '2025-10-30 12:01:51', '2025-10-30 12:01:51', 'N/A'),
+	(574, 1001, 376, 10, 'app.userprofileVisited', '2025-10-30 12:01:51', '2025-10-30 12:01:51', 'N/A'),
+	(575, 1002, 681, 20, 'app.uservisitingprofile', '2025-10-30 12:04:18', '2025-10-30 12:04:18', 'N/A'),
+	(576, 1001, 386, 10, 'app.userprofileVisited', '2025-10-30 12:04:18', '2025-10-30 12:04:18', 'N/A'),
+	(577, 1002, 701, 20, 'app.uservisitingprofile', '2025-10-30 12:04:40', '2025-10-30 12:04:40', 'N/A'),
+	(578, 1001, 396, 10, 'app.userprofileVisited', '2025-10-30 12:04:40', '2025-10-30 12:04:40', 'N/A'),
+	(579, 1002, 706, 5, 'app.userlogin', '2025-10-30 12:16:45', '2025-10-30 12:16:45', 'N/A'),
+	(580, 1002, 711, 5, 'app.userlogin', '2025-10-30 12:17:56', '2025-10-30 12:17:56', 'N/A'),
+	(581, 1002, 716, 5, 'app.userlogin', '2025-10-30 12:18:51', '2025-10-30 12:18:51', 'N/A'),
+	(582, 1002, 736, 20, 'app.uservisitingprofile', '2025-10-30 12:18:59', '2025-10-30 12:18:59', 'N/A'),
+	(583, 1001, 406, 10, 'app.userprofileVisited', '2025-10-30 12:18:59', '2025-10-30 12:18:59', 'N/A'),
+	(584, 1002, 741, 5, 'app.userlogin', '2025-10-30 12:23:25', '2025-10-30 12:23:25', 'N/A'),
+	(585, 1002, 761, 20, 'app.uservisitingprofile', '2025-10-30 12:23:30', '2025-10-30 12:23:30', 'N/A'),
+	(586, 1001, 416, 10, 'app.userprofileVisited', '2025-10-30 12:23:30', '2025-10-30 12:23:30', 'N/A'),
+	(587, 1002, 766, 5, 'app.userlogin', '2025-10-30 12:26:26', '2025-10-30 12:26:26', 'N/A'),
+	(588, 1002, 771, 5, 'app.userlogin', '2025-10-30 12:26:53', '2025-10-30 12:26:53', 'N/A'),
+	(589, 1002, 776, 5, 'app.userlogin', '2025-10-30 12:27:30', '2025-10-30 12:27:30', 'N/A'),
+	(590, 1002, 781, 5, 'app.userlogin', '2025-10-30 12:28:04', '2025-10-30 12:28:04', 'N/A'),
+	(591, 1002, 786, 5, 'app.userlogin', '2025-10-30 12:28:33', '2025-10-30 12:28:33', 'N/A'),
+	(592, 1002, 791, 5, 'app.userlogin', '2025-10-30 12:31:18', '2025-10-30 12:31:18', 'N/A'),
+	(593, 1002, 811, 20, 'app.uservisitingprofile', '2025-10-30 12:31:43', '2025-10-30 12:31:43', 'N/A'),
+	(594, 1001, 426, 10, 'app.userprofileVisited', '2025-10-30 12:31:43', '2025-10-30 12:31:43', 'N/A'),
+	(595, 1002, 816, 5, 'app.userlogin', '2025-10-30 12:46:33', '2025-10-30 12:46:33', 'N/A'),
+	(596, 1002, 821, 5, 'app.userlogin', '2025-10-30 12:47:33', '2025-10-30 12:47:33', 'N/A'),
+	(597, 1002, 841, 20, 'app.uservisitingprofile', '2025-10-30 12:47:59', '2025-10-30 12:47:59', 'N/A'),
+	(598, 1001, 436, 10, 'app.userprofileVisited', '2025-10-30 12:47:59', '2025-10-30 12:47:59', 'N/A'),
+	(599, 1001, 441, 5, 'app.userlogin', '2025-10-30 12:51:01', '2025-10-30 12:51:01', 'N/A'),
+	(600, 1001, 446, 5, 'app.userlogin', '2025-10-30 13:03:07', '2025-10-30 13:03:07', 'N/A'),
+	(601, 1001, 466, 20, 'app.uservisitingprofile', '2025-10-30 13:04:10', '2025-10-30 13:04:10', 'N/A'),
+	(602, 1002, 851, 10, 'app.userprofileVisited', '2025-10-30 13:04:10', '2025-10-30 13:04:10', 'N/A'),
+	(603, 1001, 471, 5, 'app.userlogin', '2025-10-30 13:22:54', '2025-10-30 13:22:54', 'N/A'),
+	(604, 1001, 491, 20, 'app.uservisitingprofile', '2025-10-30 13:22:59', '2025-10-30 13:22:59', 'N/A'),
+	(605, 1002, 861, 10, 'app.userprofileVisited', '2025-10-30 13:22:59', '2025-10-30 13:22:59', 'N/A'),
+	(606, 1001, 496, 5, 'app.userlogin', '2025-10-30 13:39:41', '2025-10-30 13:39:41', 'N/A'),
+	(607, 1001, 516, 20, 'app.uservisitingprofile', '2025-10-30 13:39:44', '2025-10-30 13:39:44', 'N/A'),
+	(608, 1002, 871, 10, 'app.userprofileVisited', '2025-10-30 13:39:44', '2025-10-30 13:39:44', 'N/A'),
+	(609, 1001, 521, 5, 'app.userlogin', '2025-10-30 13:40:29', '2025-10-30 13:40:29', 'N/A'),
+	(610, 1001, 541, 20, 'app.uservisitingprofile', '2025-10-30 13:40:33', '2025-10-30 13:40:33', 'N/A'),
+	(611, 1002, 881, 10, 'app.userprofileVisited', '2025-10-30 13:40:33', '2025-10-30 13:40:33', 'N/A'),
+	(612, 1001, 546, 5, 'app.userlogin', '2025-10-30 14:09:14', '2025-10-30 14:09:14', 'N/A'),
+	(613, 1001, 566, 20, 'app.uservisitingprofile', '2025-10-30 14:09:19', '2025-10-30 14:09:19', 'N/A'),
+	(614, 1003, 256, 10, 'app.userprofileVisited', '2025-10-30 14:09:19', '2025-10-30 14:09:19', 'N/A'),
+	(615, 1001, 571, 5, 'app.userlogin', '2025-10-30 14:24:00', '2025-10-30 14:24:00', 'N/A'),
+	(616, 1001, 591, 20, 'app.uservisitingprofile', '2025-10-30 14:24:08', '2025-10-30 14:24:08', 'N/A'),
+	(617, 1002, 891, 10, 'app.userprofileVisited', '2025-10-30 14:24:08', '2025-10-30 14:24:08', 'N/A'),
+	(618, 1001, 596, 5, 'app.userlogin', '2025-10-30 14:42:10', '2025-10-30 14:42:10', 'N/A'),
+	(619, 1001, 616, 20, 'app.uservisitingprofile', '2025-10-30 14:42:15', '2025-10-30 14:42:15', 'N/A'),
+	(620, 1002, 901, 10, 'app.userprofileVisited', '2025-10-30 14:42:15', '2025-10-30 14:42:15', 'N/A'),
+	(621, 1001, 621, 5, 'app.userlogin', '2025-10-30 14:46:14', '2025-10-30 14:46:14', 'N/A'),
+	(622, 1001, 641, 20, 'app.uservisitingprofile', '2025-10-30 14:46:17', '2025-10-30 14:46:17', 'N/A'),
+	(623, 1002, 911, 10, 'app.userprofileVisited', '2025-10-30 14:46:17', '2025-10-30 14:46:17', 'N/A'),
+	(624, 1001, 646, 5, 'app.userlogin', '2025-10-30 14:47:15', '2025-10-30 14:47:15', 'N/A'),
+	(625, 1001, 666, 20, 'app.uservisitingprofile', '2025-10-30 14:47:19', '2025-10-30 14:47:19', 'N/A'),
+	(626, 1002, 921, 10, 'app.userprofileVisited', '2025-10-30 14:47:19', '2025-10-30 14:47:19', 'N/A'),
+	(627, 1001, 671, 5, 'app.userlogin', '2025-10-30 14:48:07', '2025-10-30 14:48:07', 'N/A'),
+	(628, 1001, 691, 20, 'app.uservisitingprofile', '2025-10-30 14:48:10', '2025-10-30 14:48:10', 'N/A'),
+	(629, 1002, 931, 10, 'app.userprofileVisited', '2025-10-30 14:48:10', '2025-10-30 14:48:10', 'N/A'),
+	(630, 1001, 696, 5, 'app.userlogin', '2025-10-30 15:14:20', '2025-10-30 15:14:20', 'N/A'),
+	(631, 1001, 716, 20, 'app.uservisitingprofile', '2025-10-30 15:14:24', '2025-10-30 15:14:24', 'N/A'),
+	(632, 1002, 941, 10, 'app.userprofileVisited', '2025-10-30 15:14:24', '2025-10-30 15:14:24', 'N/A'),
+	(633, 1001, 733, 20, 'app.uservisitingprofile', '2025-10-30 15:14:35', '2025-10-30 15:14:35', 'N/A'),
+	(634, 1002, 951, 10, 'app.userprofileVisited', '2025-10-30 15:14:35', '2025-10-30 15:14:35', 'N/A'),
+	(635, 1002, 956, 5, 'app.userlogin', '2025-10-30 15:15:16', '2025-10-30 15:15:16', 'N/A'),
+	(636, 1001, 738, 5, 'app.userlogin', '2025-10-30 15:18:25', '2025-10-30 15:18:25', 'N/A'),
+	(637, 1001, 743, 5, 'app.userlogin', '2025-10-31 16:28:12', '2025-10-31 16:28:12', 'N/A'),
+	(638, 1001, 763, 20, 'app.uservisitingprofile', '2025-10-31 16:28:34', '2025-10-31 16:28:34', 'N/A'),
+	(639, 1002, 966, 10, 'app.userprofileVisited', '2025-10-31 16:28:34', '2025-10-31 16:28:34', 'N/A'),
+	(640, 1001, 768, 5, 'app.userlogin', '2025-10-31 16:34:57', '2025-10-31 16:34:57', 'N/A'),
+	(641, 1001, 788, 20, 'app.uservisitingprofile', '2025-10-31 16:35:03', '2025-10-31 16:35:03', 'N/A'),
+	(642, 1002, 976, 10, 'app.userprofileVisited', '2025-10-31 16:35:03', '2025-10-31 16:35:03', 'N/A'),
+	(643, 1001, 807, 20, 'app.uservisitingprofile', '2025-10-31 16:35:21', '2025-10-31 16:35:21', 'N/A'),
+	(644, 1002, 986, 10, 'app.userprofileVisited', '2025-10-31 16:35:21', '2025-10-31 16:35:21', 'N/A');
 
 -- Volcando estructura para tabla rigola.credits
 CREATE TABLE IF NOT EXISTS `credits` (
@@ -608,7 +785,7 @@ CREATE TABLE IF NOT EXISTS `credits` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21056 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.credits: ~11 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.credits: ~14 rows (aproximadamente)
 INSERT INTO `credits` (`id`, `user_id`, `balance`, `created_at`, `updated_at`) VALUES
 	(21042, 21105, 286, '2025-08-17 14:21:03', '2025-10-02 14:51:32'),
 	(21043, 21106, 1981, '2025-08-19 10:30:29', '2025-10-09 13:21:13'),
@@ -621,9 +798,9 @@ INSERT INTO `credits` (`id`, `user_id`, `balance`, `created_at`, `updated_at`) V
 	(21050, 21152, 855, '2025-10-10 19:45:05', '2025-10-20 10:43:57'),
 	(21051, 21153, 326, '2025-10-10 19:50:09', '2025-10-20 15:10:40'),
 	(21052, 21154, 71, '2025-10-12 13:20:18', '2025-10-13 16:07:38'),
-	(21053, 1001, 46, '2025-10-22 11:28:36', '2025-10-22 16:14:34'),
-	(21054, 1002, 41, '2025-10-22 12:04:08', '2025-10-22 16:17:39'),
-	(21055, 1003, 101, '2025-10-22 15:48:36', '2025-10-22 17:53:02');
+	(21053, 1001, 807, '2025-10-22 11:28:36', '2025-10-31 16:35:21'),
+	(21054, 1002, 986, '2025-10-22 12:04:08', '2025-10-31 16:35:21'),
+	(21055, 1003, 256, '2025-10-22 15:48:36', '2025-10-30 14:09:19');
 
 -- Volcando estructura para tabla rigola.czars
 CREATE TABLE IF NOT EXISTS `czars` (
@@ -637,9 +814,9 @@ CREATE TABLE IF NOT EXISTS `czars` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.czars: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.czars: ~1 rows (aproximadamente)
 INSERT INTO `czars` (`id`, `username`, `password`, `created_at`, `updated_at`, `last_login`, `last_ip`) VALUES
-	(5, 'admin', '$2a$08$3ahZkyif19pORxaDdXeOhuwQPdf6DeRvVhf0seUDHW6.GtTyO7n9S', '2025-08-06 13:53:09', '2025-10-20 15:08:57', '2025-10-20 15:08:57', '192.168.1.1');
+	(5, 'admin', '$2a$08$3ahZkyif19pORxaDdXeOhuwQPdf6DeRvVhf0seUDHW6.GtTyO7n9S', '2025-08-06 13:53:09', '2025-10-31 16:31:22', '2025-10-31 16:31:22', '192.168.1.1');
 
 -- Volcando estructura para tabla rigola.encounters
 CREATE TABLE IF NOT EXISTS `encounters` (
@@ -683,9 +860,12 @@ CREATE TABLE IF NOT EXISTS `gifts` (
   `updated_at` datetime NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.gifts: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.gifts: ~2 rows (aproximadamente)
+INSERT INTO `gifts` (`id`, `name`, `icon_id`, `created_at`, `updated_at`, `price`) VALUES
+	(16, 'La Gioconda', '6386726904e4c3356a4', '2025-10-31 16:33:07', '2025-10-31 16:33:07', 1),
+	(17, 'desert', '8459416904e4f767c71', '2025-10-31 16:33:59', '2025-10-31 16:33:59', 1);
 
 -- Volcando estructura para tabla rigola.interests
 CREATE TABLE IF NOT EXISTS `interests` (
@@ -695,13 +875,14 @@ CREATE TABLE IF NOT EXISTS `interests` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.interests: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.interests: ~4 rows (aproximadamente)
 INSERT INTO `interests` (`id`, `category`, `name`, `created_at`, `updated_at`) VALUES
 	(11, '1', 's', '2025-10-22 17:35:45', '2025-10-22 17:35:45'),
 	(12, '2', 'buscando', '2025-10-22 17:40:26', '2025-10-22 17:40:26'),
-	(13, '2', 'buscando', '2025-10-22 17:41:21', '2025-10-22 17:41:21');
+	(13, '2', 'buscando', '2025-10-22 17:41:21', '2025-10-22 17:41:21'),
+	(14, '1', 'Chatear', '2025-10-25 09:12:03', '2025-10-25 09:12:03');
 
 -- Volcando estructura para tabla rigola.interest_categories
 CREATE TABLE IF NOT EXISTS `interest_categories` (
@@ -711,13 +892,14 @@ CREATE TABLE IF NOT EXISTS `interest_categories` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.interest_categories: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.interest_categories: ~4 rows (aproximadamente)
 INSERT INTO `interest_categories` (`id`, `name`, `code`, `created_at`, `updated_at`) VALUES
 	(1, 'personas con las que chatear', '1', '2025-10-22 17:35:45', '2025-10-22 19:34:07'),
 	(2, 'encuentros amistosos', '2', '2025-10-22 17:35:45', '2025-10-22 17:35:45'),
-	(3, 'parejas amorosas', '3', '2025-10-22 17:35:45', '2025-10-22 17:35:45');
+	(3, 'parejas amorosas', '3', '2025-10-22 17:35:45', '2025-10-22 17:35:45'),
+	(7, 'Conocer', 'conocer', '2025-10-25 09:11:43', '2025-10-25 09:11:43');
 
 -- Volcando estructura para tabla rigola.meetme
 CREATE TABLE IF NOT EXISTS `meetme` (
@@ -742,9 +924,9 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=393 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=440 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.notifications: ~16 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.notifications: ~63 rows (aproximadamente)
 INSERT INTO `notifications` (`id`, `from_user`, `to_user`, `status`, `notify_status`, `type`, `created_at`, `updated_at`) VALUES
 	(377, 21106, 21105, 1, 0, 'profilevisit', '2025-09-29 15:17:53', '2025-09-29 15:18:56'),
 	(378, 21106, 21105, 1, 0, 'profilevisit', '2025-09-29 15:17:53', '2025-09-29 15:18:56'),
@@ -761,7 +943,57 @@ INSERT INTO `notifications` (`id`, `from_user`, `to_user`, `status`, `notify_sta
 	(389, 21146, 21106, 1, 0, 'profilevisit', '2025-10-08 17:20:32', '2025-10-09 13:14:03'),
 	(390, 21146, 21106, 1, 0, 'profilevisit', '2025-10-09 11:32:51', '2025-10-09 13:14:03'),
 	(391, 21106, 21146, 0, 0, 'profilevisit', '2025-10-09 13:18:59', '2025-10-09 13:18:59'),
-	(392, 21148, 21149, 0, 0, 'profilevisit', '2025-10-10 17:34:21', '2025-10-10 17:34:21');
+	(392, 21148, 21149, 0, 0, 'profilevisit', '2025-10-10 17:34:21', '2025-10-10 17:34:21'),
+	(393, 1003, 1001, 0, 0, 'profilevisit', '2025-10-26 13:44:20', '2025-10-26 13:44:20'),
+	(394, 1003, 1002, 0, 0, 'profilevisit', '2025-10-26 13:44:28', '2025-10-26 13:44:28'),
+	(395, 1003, 1001, 0, 0, 'profilevisit', '2025-10-26 14:08:30', '2025-10-26 14:08:30'),
+	(396, 1001, 1003, 0, 0, 'profilevisit', '2025-10-26 17:17:55', '2025-10-26 17:17:55'),
+	(397, 1001, 1003, 0, 0, 'profilevisit', '2025-10-26 17:19:35', '2025-10-26 17:19:35'),
+	(398, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 08:29:53', '2025-10-28 08:29:53'),
+	(399, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 15:01:25', '2025-10-28 15:01:25'),
+	(400, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 15:16:54', '2025-10-28 15:16:54'),
+	(401, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 15:17:02', '2025-10-28 15:17:02'),
+	(402, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 15:20:17', '2025-10-28 15:20:17'),
+	(403, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 15:42:21', '2025-10-28 15:42:21'),
+	(404, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 15:44:40', '2025-10-28 15:44:40'),
+	(405, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 15:51:07', '2025-10-28 15:51:07'),
+	(406, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 15:52:21', '2025-10-28 15:52:21'),
+	(407, 1002, 1003, 0, 0, 'profilevisit', '2025-10-28 17:29:53', '2025-10-28 17:29:53'),
+	(408, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 17:31:37', '2025-10-28 17:31:37'),
+	(409, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 17:35:07', '2025-10-28 17:35:07'),
+	(410, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 17:36:43', '2025-10-28 17:36:43'),
+	(411, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 17:38:31', '2025-10-28 17:38:31'),
+	(412, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 17:41:16', '2025-10-28 17:41:16'),
+	(413, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 17:42:55', '2025-10-28 17:42:55'),
+	(414, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 17:45:05', '2025-10-28 17:45:05'),
+	(415, 1002, 1001, 0, 0, 'profilevisit', '2025-10-28 17:46:44', '2025-10-28 17:46:44'),
+	(416, 1002, 1001, 0, 0, 'profilevisit', '2025-10-29 13:23:05', '2025-10-29 13:23:05'),
+	(417, 1002, 1001, 0, 0, 'profilevisit', '2025-10-29 13:29:01', '2025-10-29 13:29:01'),
+	(418, 1002, 1001, 0, 0, 'profilevisit', '2025-10-29 13:31:59', '2025-10-29 13:31:59'),
+	(419, 1002, 1001, 0, 0, 'profilevisit', '2025-10-29 13:34:25', '2025-10-29 13:34:25'),
+	(420, 1002, 1001, 0, 0, 'profilevisit', '2025-10-29 13:37:05', '2025-10-29 13:37:05'),
+	(421, 1002, 1001, 0, 0, 'profilevisit', '2025-10-30 12:01:51', '2025-10-30 12:01:51'),
+	(422, 1002, 1001, 0, 0, 'profilevisit', '2025-10-30 12:04:18', '2025-10-30 12:04:18'),
+	(423, 1002, 1001, 0, 0, 'profilevisit', '2025-10-30 12:04:40', '2025-10-30 12:04:40'),
+	(424, 1002, 1001, 0, 0, 'profilevisit', '2025-10-30 12:18:59', '2025-10-30 12:18:59'),
+	(425, 1002, 1001, 0, 0, 'profilevisit', '2025-10-30 12:23:30', '2025-10-30 12:23:30'),
+	(426, 1002, 1001, 0, 0, 'profilevisit', '2025-10-30 12:31:43', '2025-10-30 12:31:43'),
+	(427, 1002, 1001, 0, 0, 'profilevisit', '2025-10-30 12:47:59', '2025-10-30 12:47:59'),
+	(428, 1001, 1002, 0, 0, 'profilevisit', '2025-10-30 13:04:10', '2025-10-30 13:04:10'),
+	(429, 1001, 1002, 0, 0, 'profilevisit', '2025-10-30 13:22:59', '2025-10-30 13:22:59'),
+	(430, 1001, 1002, 0, 0, 'profilevisit', '2025-10-30 13:39:44', '2025-10-30 13:39:44'),
+	(431, 1001, 1002, 0, 0, 'profilevisit', '2025-10-30 13:40:33', '2025-10-30 13:40:33'),
+	(432, 1001, 1003, 0, 0, 'profilevisit', '2025-10-30 14:09:19', '2025-10-30 14:09:19'),
+	(433, 1001, 1002, 0, 0, 'profilevisit', '2025-10-30 14:24:08', '2025-10-30 14:24:08'),
+	(434, 1001, 1002, 0, 0, 'profilevisit', '2025-10-30 14:42:15', '2025-10-30 14:42:15'),
+	(435, 1001, 1002, 0, 0, 'profilevisit', '2025-10-30 14:46:17', '2025-10-30 14:46:17'),
+	(436, 1001, 1002, 0, 0, 'profilevisit', '2025-10-30 14:47:19', '2025-10-30 14:47:19'),
+	(437, 1001, 1002, 0, 0, 'profilevisit', '2025-10-30 14:48:10', '2025-10-30 14:48:10'),
+	(438, 1001, 1002, 0, 0, 'profilevisit', '2025-10-30 15:14:24', '2025-10-30 15:14:24'),
+	(439, 1001, 1002, 0, 0, 'profilevisit', '2025-10-30 15:14:35', '2025-10-30 15:14:35'),
+	(440, 1001, 1002, 0, 0, 'profilevisit', '2025-10-31 16:28:34', '2025-10-31 16:28:34'),
+	(441, 1001, 1002, 0, 0, 'profilevisit', '2025-10-31 16:35:03', '2025-10-31 16:35:03'),
+	(442, 1001, 1002, 0, 0, 'profilevisit', '2025-10-31 16:35:21', '2025-10-31 16:35:21');
 
 -- Volcando estructura para tabla rigola.packages
 CREATE TABLE IF NOT EXISTS `packages` (
@@ -790,7 +1022,7 @@ CREATE TABLE IF NOT EXISTS `photos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.photos: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.photos: ~6 rows (aproximadamente)
 INSERT INTO `photos` (`id`, `photo_id`, `user_id`, `rating`, `no_users`, `created_at`, `updated_at`) VALUES
 	(78, '21152128486368e962c1a7ab9', 21152, 0, 0, '2025-10-10 19:47:15', '2025-10-10 19:47:15'),
 	(79, '211536316268e9645413980', 21153, 0, 0, '2025-10-10 19:53:56', '2025-10-10 19:53:56'),
@@ -849,7 +1081,7 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21070 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.profiles: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.profiles: ~3 rows (aproximadamente)
 INSERT INTO `profiles` (`id`, `user_id`, `relationshipstatus`, `bodytype`, `haircolor`, `eyecolor`, `living`, `smoking`, `drinking`, `education`, `children`, `aboutme`, `interestedin`, `created_at`, `updated_at`, `popularity`, `whyamihere`, `preferred_gender`, `preferred_age`) VALUES
 	(21067, 1001, 1, 4, 2, 2, 5, 1, 4, 3, 3, '', '', '2025-10-22 11:28:36', '2025-10-22 16:16:18', 0, 1, 2, 3),
 	(21068, 1002, 1, 3, 2, 1, 5, 1, 4, 2, 2, '', '', '2025-10-22 12:04:08', '2025-10-22 16:18:33', 0, 1, 1, 3),
@@ -885,19 +1117,10 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.sessions: ~76 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.sessions: ~14 rows (aproximadamente)
 INSERT INTO `sessions` (`id`, `last_activity`, `data`, `user_id`) VALUES
-	('4PoHme2x86oRTPWO7KShQ5wYovGMZjVtJnqA03rf', 1761155211, 'a:5:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"JhqymyvHJgiJUo10AWeqd3AvjTtp83swiw6A0qnz";s:20:"session_captcha_hash";s:60:"$2a$08$QHROIdE3PLyx9Cf4fOKJ5.ncf8B9iM0b.h/hBg7iKIGc0MRtX3zB6";s:35:"laravel_auth_drivers_eloquent_login";i:1003;}', 1003),
-	('5mbc4EXW0nTSqEo6gAnhgGgm06XT1pruptM1Q7Ho', 1761155312, 'a:5:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"E21gjduH1QnuKmUgvfSuSLpTMydaQcsb0qowBybY";s:20:"session_captcha_hash";s:60:"$2a$08$lRQYBmkrJKfL20/2ZrtgruINy/2rZSNEURJraEo8dK04fL0hC7l2y";s:35:"laravel_auth_drivers_eloquent_login";i:1003;}', 1003),
-	('6Zn5bbmFuFEPulKhrH5bI1Dj0SapLbRJwtYcJZ6q', 1761155269, 'a:5:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"D43DsjkLmyb0a9oS0zngFFO26GwqNWlQl8KWlEiM";s:20:"session_captcha_hash";s:60:"$2a$08$LoZX1yZbx.9B1hwB/.KPCOXqRREsdB4jMRCjnL9zj9YWioRKpLPdO";s:35:"laravel_auth_drivers_eloquent_login";i:1003;}', 1003),
-	('9PP8xy6vSwTk1MZmpIRfkPvY9CTCnSM6MbGojoVG', 1761155549, 'a:5:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"zejOWfxGAQOvtfsVQsuvHrs9kvJrO0NzcDN9ELpm";s:20:"session_captcha_hash";s:60:"$2a$08$2ltMzOZFSxyvU4GF3w9YSuJ9tKhGrMPtfn5N1tOUNQwKdcwnIqcoq";s:35:"laravel_auth_drivers_eloquent_login";i:1003;}', 1003),
-	('A2Qs6OdB1OYIeN9iSOrynIfqXGU54t33qkFZuR8b', 1761154742, 'a:5:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"hWupPlYsgd8j15X8DTFSyaHDfOOtq6aqCbMHf7yx";s:20:"session_captcha_hash";s:60:"$2a$08$VVe3iO6.40uRRY/hHgm6EeMr55FWEBn/LarIwhX1riL7bd55AB66u";s:35:"laravel_auth_drivers_eloquent_login";i:1003;}', 1003),
-	('AwoaNdpzHMNwu6OYb3gbjBC0l6s9yZkCOTWsXOfh', 1761154276, 'a:5:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"NSkaAVjfGNU8ECBn0VgS5d6U82oLfxzrzsfkDggD";s:20:"session_captcha_hash";s:60:"$2a$08$lrzdcf1twCsAQn5jbcS.V.691Md2HxQU5NaUlW9DTTp7oT4IV7QU.";s:35:"laravel_auth_drivers_eloquent_login";i:1003;}', 1003),
-	('JOEG54doM0sjyxYNN3tkmidqoT1DwNcgRFhhbLWB', 1761153746, 'a:3:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"ssWYhN1KKIlWhS7SXgd1o0SA1kWonXb3EzE3oBlU";}', 0),
-	('mUtV3XdF75S3RB9obtDEoJO6rkguZWiirwhGXfSU', 1761153746, 'a:3:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"K4lyZR3EBjXpL8qNNvwK6lZrI5319PHzXHAWhlsb";}', 0),
-	('SaPLgAHpEqVuhJyZTnIXml9gtDMYopjg8L5zBeK9', 1761153746, 'a:3:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"5jxxqIChVV0yHjwZAu4DVM7WaAUJXpX2PquDEf79";}', 0),
-	('VoSljciBJnJbpcjkhEBCSRUPzuoQoT6PxJmLxlsF', 1761154886, 'a:5:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"hClF8iZI8xOcbdLoJzWR9BYhwUlcjMnHXBzzI4ad";s:20:"session_captcha_hash";s:60:"$2a$08$KRmCwuJ5Tjn0T1v6YK4aie1a3QlgQxNtKuYgbeU3XFcwGx8.FdbhK";s:35:"laravel_auth_drivers_eloquent_login";i:1003;}', 1003),
-	('yCcayknVqd8hsI3DRMzerpKJZbv8nI9Q1RSxXPBr', 1761155587, 'a:5:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"kpTk7Z8Tn37YbKjm7PJzhmH8eMjyGQ7Zazjw1t3G";s:20:"session_captcha_hash";s:60:"$2a$08$TaPQDK9bynrjBZZsm7bF6.8rZhsyQ32fIT6PWhyqCfxxgFQbA2no.";s:35:"laravel_auth_drivers_eloquent_login";i:1003;}', 1003);
+	('G7hbA1vuxVOmk0vmNnAyddHvDtpSnLUWfNjktMGF', 1761928448, 'a:6:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"UpeXH3uO1h9Cdnt2ziSSGXkNKm7fXccERtnBjpYP";s:20:"session_captcha_hash";s:60:"$2a$08$q3F0n4/6DOotMZb62fvg1euJY/WXilLiX/xrDbzPlxsPql3V1Olmq";s:35:"laravel_auth_drivers_eloquent_login";i:1001;s:12:"czar_session";O:4:"Czar":5:{s:10:"attributes";a:7:{s:2:"id";i:5;s:8:"username";s:5:"admin";s:8:"password";s:60:"$2a$08$3ahZkyif19pORxaDdXeOhuwQPdf6DeRvVhf0seUDHW6.GtTyO7n9S";s:10:"created_at";s:19:"2025-08-06 13:53:09";s:10:"updated_at";O:8:"DateTime":3:{s:4:"date";s:26:"2025-10-31 16:31:22.078215";s:13:"timezone_type";i:3;s:8:"timezone";s:3:"UTC";}s:10:"last_login";s:19:"2025-10-31 16:31:22";s:7:"last_ip";s:11:"192.168.1.1";}s:8:"original";a:7:{s:2:"id";i:5;s:8:"username";s:5:"admin";s:8:"password";s:60:"$2a$08$3ahZkyif19pORxaDdXeOhuwQPdf6DeRvVhf0seUDHW6.GtTyO7n9S";s:10:"created_at";s:19:"2025-08-06 13:53:09";s:10:"updated_at";r:13;s:10:"last_login";s:19:"2025-10-31 16:31:22";s:7:"last_ip";s:11:"192.168.1.1";}s:13:"relationships";a:0:{}s:6:"exists";b:1;s:8:"includes";a:0:{}}}', 1001),
+	('uit3maNRbFmdxYIhlXDzSPvAHk8L1KxC4lUTCKel', 1761928522, 'a:5:{s:5:":new:";a:0:{}s:5:":old:";a:0:{}s:10:"csrf_token";s:40:"wruBMOkaFkO62zrve4COQku6xyawYL4SmmQP5VfJ";s:20:"session_captcha_hash";s:60:"$2a$08$L6/55eTCqvyxjNejHWThhuzL1dmAZhw2zfJMhySa55Nvdd9oWXwDS";s:35:"laravel_auth_drivers_eloquent_login";i:1001;}', 1001);
 
 -- Volcando estructura para tabla rigola.settings
 CREATE TABLE IF NOT EXISTS `settings` (
@@ -932,7 +1155,7 @@ INSERT INTO `settings` (`id`, `name`, `value`, `created_at`, `updated_at`) VALUE
 	(28, 'email_notification_profile_visitor', '1', '2013-10-28 13:12:12', '2014-03-28 12:16:43'),
 	(30, 'email_notification_message', '1', '2013-10-28 13:12:12', '2014-03-28 12:16:52'),
 	(31, 'email_notification_meetme', '1', '2013-10-28 13:12:51', '2014-03-28 12:16:43'),
-	(32, 'email_content_profile_visitor', '[from_username] Acabo de visitar tu perfil.\r\n\r\nCheckout their profile -> [from_user_profile_link]', '2013-10-28 15:21:29', '2014-03-28 08:54:22'),
+	(32, 'email_content_profile_visitor', '[from_username] acaba de visitar tu perfil.\r\n\r\nConsulta su perfil -> [from_user_profile_link]', '2013-10-28 15:21:29', '2014-03-28 08:54:22'),
 	(33, 'email_content_message', '[from_username] Te envió un mensaje!\r\n\r\n[message]', '2013-10-29 08:19:25', '2014-03-28 10:58:40'),
 	(34, 'email_content_meetme', '[from_username] quiere conocerte\r\n\r\nThis is the profile  [from_user_profile_link]', '2013-10-29 08:19:31', '2014-03-28 09:47:35'),
 	(35, 'email_content_forgot_password', '', '2013-10-29 08:19:38', '2013-10-29 08:19:38'),
@@ -1029,7 +1252,7 @@ INSERT INTO `settings` (`id`, `name`, `value`, `created_at`, `updated_at`) VALUE
 	(141, 'email_notification_mutual_attraction', '1', '2014-03-28 12:16:43', '2014-03-28 12:16:43'),
 	(142, 'email_notification_add_contact', '1', '2014-03-28 12:16:43', '2014-03-28 12:16:43'),
 	(143, 'email_notification_send_gift', '1', '2014-03-28 12:16:43', '2014-03-28 12:16:43'),
-	(144, 'email_content_send_gift', '[from_username] sent you a gift!', '2014-03-29 17:14:58', '2014-03-29 17:14:58'),
+	(144, 'email_content_send_gift', '[from_username] ¡Te envié un regalo!', '2014-03-29 17:14:58', '2014-03-29 17:14:58'),
 	(145, 'email_subject_send_gift', 'recibiste un regalo', '2014-03-29 17:14:58', '2014-03-29 17:14:58'),
 	(146, 'email_content_mutual_attraction', '[from_username] ¡¡¡Quiere conocerte también!!!', '2014-03-29 18:44:00', '2014-03-29 18:44:00'),
 	(147, 'email_subject_mutual_attraction', 'Atracción mutua', '2014-03-29 18:45:59', '2014-03-29 18:45:59');
@@ -1090,7 +1313,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Volcando datos para la tabla rigola.users: ~1.003 rows (aproximadamente)
 INSERT INTO `users` (`id`, `email`, `name`, `password`, `gender`, `age`, `last_login`, `created_at`, `updated_at`, `photo_id`, `role`, `city`, `country`, `fb`, `verified`, `verification_no`, `language`, `profile_score`, `album_count`, `lat`, `lng`) VALUES
-	(1, 'hdrennan0@washington.edu', 'Humberto', '$2a$04$c7pucK3ZJ3/m5t.5kPxeY.JjzRApyOeVT7aTZQj.W0veVJ/eqLNf2', 2, 44, '2025-10-06 22:00:00', '2016-03-25 00:00:00', '2025-09-15 00:00:00', '', 0, 'Santander', 'España', '', 1, '', '', 9, 0, 10000.000000, -10000.000000),
+	(1, 'hdrennan0@washington.edu', 'Humberto', '$2a$04$c7pucK3ZJ3/m5t.5kPxeY.JjzRApyOeVT7aTZQj.W0veVJ/eqLNf2', 2, 44, '2025-10-24 14:05:00', '2016-03-25 00:00:00', '2025-09-15 00:00:00', '', 0, 'Santander', 'España', '', 1, '', '', 9, 0, 10000.000000, -10000.000000),
 	(2, 'jastill1@independent.co.uk', 'Jana', '$2a$04$JbOAoBOXYv9b9YoexchkuulXXhTKyBt9zw9tOPiF1N0nvS6hSbC7a', 1, 27, '2025-10-07 22:00:00', '2018-11-02 00:00:00', '2024-12-25 00:00:00', '', 0, 'Santander', 'España', '', 1, '', '', 9, 0, 10000.000000, -10000.000000),
 	(3, 'nsipson2@youtube.com', 'Neile', '$2a$04$D1bEqgb9fHpng.gzsG.GDemNTLQ.0eliA/fRlqi66GcjEPP5ZVBbe', 1, 27, '2025-09-13 22:00:00', '2014-12-25 00:00:00', '2025-05-24 00:00:00', '', 0, 'Lleida', 'España', '', 1, '', '', 9, 0, 10000.000000, 10000.000000),
 	(4, 'ecresswell3@alexa.com', 'Emmalee', '$2a$04$GJ25Pq7ErDWm6eGPD6bCIeuXWSRZdGh1xKscK07AB.Wts/QAE3AqG', 1, 51, '2025-09-02 22:00:00', '2013-01-30 00:00:00', '2025-01-03 00:00:00', '', 0, 'Almeria', 'España', '', 1, '', '', 9, 0, 10000.000000, -10000.000000),
@@ -2090,9 +2313,9 @@ INSERT INTO `users` (`id`, `email`, `name`, `password`, `gender`, `age`, `last_l
 	(998, 'wmorphewrp@bloglines.com', 'Wallis', '$2a$04$okFIpjk9Ik6wOVLfWuFsg.xPrQujfx.isd1Txy4kqic0RPxj37rIy', 2, 34, '2025-10-11 22:00:00', '2010-03-30 00:00:00', '2024-10-28 00:00:00', '', 0, 'Salamanca', 'España', '', 1, '', '', 9, 0, 10000.000000, -10000.000000),
 	(999, 'clindenbaumrq@sbwire.com', 'Clay', '$2a$04$oQ7Hvn2lSm8IHD2oFYC5se8I4Hni9/V2xOaxLz/tu1PltYvwdAfBS', 2, 28, '2025-09-05 22:00:00', '2019-04-06 00:00:00', '2025-07-03 00:00:00', '', 0, 'Lleida', 'España', '', 1, '', '', 9, 0, 10000.000000, 10000.000000),
 	(1000, 'ccrutcherrr@ask.com', 'Christabella', '$2a$04$b0i0VFeqRRp45iff7FpKY.C.IUir2/Rzo6AzRqlXg.Z6qD1Zj6Jzi', 1, 42, '2025-09-10 22:00:00', '2021-07-31 00:00:00', '2025-02-18 00:00:00', '', 0, 'Leon', 'España', '', 1, '', '', 9, 0, 10000.000000, -10000.000000),
-	(1001, 'raulcasanova@yahoo.com', 'Raul', '$2a$08$Mg3gV6WO32PIVQvbJYAag.4WExFttlAhkOGJh6u0BNm5Mbsil..26', 1, 51, '2025-10-22 16:16:18', '2025-10-22 11:28:32', '2025-10-22 16:16:18', '1001128486368f8cabe14807', 0, 'Cercedilla', 'España', NULL, 1, '68f8bfe022ec6', '', 9, 0, 40.733624, -4.067473),
-	(1002, 'rac1408@gmail.com', 'Cecilia', '$2a$08$HH6iUD.JzeyV4B7eZWa6eu6KigM8hbLUJ798IQtfE8O5ttPPWFn7e', 2, 49, '2025-10-22 16:18:33', '2025-10-22 12:04:07', '2025-10-22 16:18:33', '10026316268f8c89f567e1', 0, 'Cercedilla', 'España', NULL, 1, '68f8c8372ee33', '', 9, 0, 40.733482, -4.067550),
-	(1003, 'mariaisabelpascualuli@gmail.com', 'Maria Isabel', '$2a$08$OyWr1U8a8WmDoZkbgbrneuoG/EbhAJ9X95oBL5BK./fptKFPb.di2', 2, 52, '2025-10-22 15:53:02', '2025-10-22 15:48:35', '2025-10-22 17:53:02', '10038430568f8ff18e5e24', 0, 'Cercedilla', 'España', NULL, 1, '68f8fcd33060e', '', 9, 0, 40.733444, -4.067542);
+	(1001, 'raulcasanova@yahoo.com', 'Raul', '$2a$08$Mg3gV6WO32PIVQvbJYAag.4WExFttlAhkOGJh6u0BNm5Mbsil..26', 1, 51, '2025-10-31 15:34:57', '2025-10-22 11:28:32', '2025-10-31 16:34:57', '1001128486368f8cabe14807', 0, 'Cercedilla', 'España', NULL, 1, '68f8bfe022ec6', '', 9, 0, 40.733624, -4.067473),
+	(1002, 'rac1408@gmail.com', 'Cecilia', '$2a$08$HH6iUD.JzeyV4B7eZWa6eu6KigM8hbLUJ798IQtfE8O5ttPPWFn7e', 2, 49, '2025-10-30 14:15:16', '2025-10-22 12:04:07', '2025-10-30 15:15:16', '10026316268f8c89f567e1', 0, 'Cercedilla', 'España', NULL, 1, '68f8c8372ee33', '', 9, 0, 40.733482, -4.067550),
+	(1003, 'mariaisabelpascualuli@gmail.com', 'Maria Isabel', '$2a$08$OyWr1U8a8WmDoZkbgbrneuoG/EbhAJ9X95oBL5BK./fptKFPb.di2', 2, 52, '2025-10-26 14:14:58', '2025-10-22 15:48:35', '2025-10-26 15:14:58', '10038430568f8ff18e5e24', 0, 'Cercedilla', 'España', NULL, 1, '68f8fcd33060e', '', 9, 0, 40.733444, -4.067542);
 
 -- Volcando estructura para tabla rigola.user_gifts
 CREATE TABLE IF NOT EXISTS `user_gifts` (
@@ -2104,9 +2327,12 @@ CREATE TABLE IF NOT EXISTS `user_gifts` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.user_gifts: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.user_gifts: ~1 rows (aproximadamente)
+INSERT INTO `user_gifts` (`id`, `type_id`, `message`, `from_user`, `to_user`, `created_at`, `updated_at`) VALUES
+	(7, 14, '', 1001, 1002, '2025-10-30 15:14:33', '2025-10-30 15:14:33'),
+	(8, 16, '', 1001, 1002, '2025-10-31 16:35:18', '2025-10-31 16:35:18');
 
 -- Volcando estructura para tabla rigola.user_interests
 CREATE TABLE IF NOT EXISTS `user_interests` (
@@ -2118,7 +2344,7 @@ CREATE TABLE IF NOT EXISTS `user_interests` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.user_interests: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.user_interests: ~1 rows (aproximadamente)
 INSERT INTO `user_interests` (`id`, `interest_id`, `user_id`, `created_at`, `updated_at`) VALUES
 	(9, 13, 1003, '2025-10-22 17:41:21', '2025-10-22 17:41:21');
 
@@ -2133,7 +2359,7 @@ CREATE TABLE IF NOT EXISTS `user_settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla rigola.user_settings: ~30 rows (aproximadamente)
+-- Volcando datos para la tabla rigola.user_settings: ~60 rows (aproximadamente)
 INSERT INTO `user_settings` (`id`, `user_id`, `name`, `value`, `created_at`, `updated_at`) VALUES
 	(1, 21152, 'show_me_offline', '0', '2025-10-10 19:45:05', '2025-10-10 19:45:05'),
 	(2, 21152, 'hide_from_search', '0', '2025-10-10 19:45:05', '2025-10-10 19:45:05'),

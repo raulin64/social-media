@@ -132,7 +132,48 @@ $(function(){
 	});
 	
 	
+	$("#gift-submit-btn").click(function(){
+alert ("ok regalo");
+			$(".gift-error").hide();
+
+			if($("#gift-select").val())
+			{
+			
+			
 	
+
+			$.post("<?php echo  url('/send_gift') ; ?>" , { gift_id : $("#gift-select").val(), to_user: '<?php echo  $profile->user->id ; ?>' } ,function(data){
+			
+				data = JSON.parse(data);
+				
+				if(data.success)
+				{
+				
+					$("#giveGiftModal").modal('hide');
+					location.reload();
+				
+				}
+				
+				if(data.error){
+				
+				alert ("error en regalo");
+					$("#giftbalance-error").show();
+					
+				
+				}
+				
+			
+			});
+			
+			}
+			else{
+			
+			$("#selectgift-error").show();
+			
+			}
+
+
+});
 	$(".add-favourite-btn").click(function(){
 	
 		to_user = $(this).data('user-id');
